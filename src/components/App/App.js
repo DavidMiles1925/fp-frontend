@@ -12,6 +12,8 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 // ********** Site Components **********
 import { userDropdown } from "../../utils/constants";
+import Header from "../Header/Header";
+import DeveloperPanel from "../DeveloperPanel/DeveloperPanel";
 
 function App() {
   const [isDevMode, setIsDevMode] = useState(false);
@@ -172,6 +174,19 @@ function App() {
           setActiveMenuSelection,
         }}
       >
+        <Header
+          selectLogin={selectLogin}
+          selectSignUp={selectSignUp}
+          history={history}
+        />
+        {isDevMode ? (
+          <DeveloperPanel
+            handleToggleLogin={handleToggleLogin}
+            handleToggleAdmin={handleToggleAdmin}
+          />
+        ) : (
+          <></>
+        )}
         {isDevMode ? <div></div> : <></>}
         {activeModal === "login" && <div></div>}
         {activeModal === "signup" && <div></div>}
