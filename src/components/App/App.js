@@ -13,6 +13,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 // ********** Site Components **********
 import { userDropdown } from "../../utils/constants";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import DeveloperPanel from "../DeveloperPanel/DeveloperPanel";
 
 function App() {
@@ -179,6 +180,7 @@ function App() {
           selectSignUp={selectSignUp}
           history={history}
         />
+        <Footer />
         {isDevMode ? (
           <DeveloperPanel
             handleToggleLogin={handleToggleLogin}
