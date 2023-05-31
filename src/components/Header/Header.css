@@ -56,6 +56,10 @@
   opacity: 0.6;
 }
 
+.header__button:active {
+  transform: scale(1);
+}
+
 .header__link {
   margin: 0 0 20px 12px;
   display: flex;

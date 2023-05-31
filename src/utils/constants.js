@@ -2,8 +2,8 @@ const myCartImage = require("../images/logo.png");
 const customerServiceImage = require("../images/logo.png");
 
 const contactInfo = {
-  EMAIL: "email@email.com",
-  PHONE_MAIN: "(000) 000-0000",
+  EMAIL: "davidmiles1925@gmail.com",
+  PHONE_MAIN: "(913) 284-6535",
   ADDRESS: "4242 E Imaginary Dr",
   CITY: "Olathe",
   STATE: "Kansas",

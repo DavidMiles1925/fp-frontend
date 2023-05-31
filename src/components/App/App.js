@@ -1,3 +1,6 @@
+// ********** Fonts **********
+import "../../fonts/fonts.css";
+
 // ********** Tools **********
 import { Route, Switch, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -5,7 +8,7 @@ import "./App.css";
 
 // ********** API **********
 import { database } from "../../utils/mockServer";
-import "../../fonts/fonts.css";
+import { getJoke } from "../../utils/chuckNorrisApi";
 
 // ********** Contexts **********
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -15,6 +18,7 @@ import { ValidationContext } from "../../contexts/ValidationContext";
 import { userDropdown } from "../../utils/constants";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Main from "../Main/Main";
 import AboutUs from "../AboutUs/AboutUs";
 import StillBuilding from "../StillBuilding/StillBuilding";
 import DeveloperPanel from "../DeveloperPanel/DeveloperPanel";
@@ -24,12 +28,14 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProductViewModal from "../ProductViewModal/ProductViewModal";
 import UserUpdateProfileModal from "../UserUpdateProfileModal/UserUpdateProfileModal";
+import { useFormAndValidation } from "../../utils/useFormAndValidation";
 
 function App() {
   const [isDevMode, setIsDevMode] = useState(false);
 
   // ********** Server **********
   const [productList, setProductList] = useState([]);
+  const [chuckJoke, setChuckJoke] = useState("");
 
   // ********** User Context **********
   const [currentUser, setCurrentUser] = useState({});
@@ -51,6 +57,22 @@ function App() {
     const firstletter = name.slice(0, 1);
     return firstletter;
   }
+
+  /*
+  function generateJoke() {
+    setIsLoading(true);
+    getJoke()
+      .then((res) => {
+        setChuckJoke(JSON.parse(JSON.stringify(res.joke)));
+      })
+      .catch((err) => {
+        console.log(err);
+        setChuckJoke("Could not reach server.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }*/
 
   // ********** User Selections **********
   function selectLogin() {
@@ -136,17 +158,6 @@ function App() {
     setErrorDisplay({ value, message });
   }
 
-  // ********** Authentication **********
-  /*function getLocalToken() {
-    try {
-      const jwt = localStorage.getItem("token");
-      return jwt;
-    } catch {
-      return null;
-    }
-  }*/
-
-  // ********** Listeners **********
   useEffect(() => {
     setActiveMenuSelection(userDropdown[0]);
   }, []);
@@ -160,6 +171,12 @@ function App() {
   useEffect(() => {
     setProductList(database.products);
   }, []);
+
+  /*
+  useEffect(() => {
+    generateJoke();
+  }, []);
+  */
 
   useEffect(() => {
     if (!activeModal) return;
@@ -199,6 +216,20 @@ function App() {
           </Route>
           <Route path='/building'>
             <StillBuilding />
+          </Route>
+          <Route path='/main'>
+            <Main
+              //generateJoke={generateJoke}
+              chuckJoke={chuckJoke}
+              isLoading={isLoading}
+            />
+          </Route>
+          <Route path='/'>
+            <Main
+              //generateJoke={generateJoke}
+              chuckJoke={chuckJoke}
+              isLoading={isLoading}
+            />
           </Route>
         </Switch>
         <Footer />

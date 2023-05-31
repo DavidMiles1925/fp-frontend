@@ -56,6 +56,10 @@
   cursor: pointer;
 }
 
+.card__cart-button:active {
+  transform: scale(1);
+}
+
 @media screen and (max-width: 766px) {
   .modal__image {
     height: 230px;
