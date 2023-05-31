@@ -1,0 +1,36 @@
+.building {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.building__parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.building__title {
+  color: #ff9666;
+  font-weight: bold;
+  font-size: 70px;
+  margin: 0 auto;
+}
+
+.building__text {
+  color: #ff9666;
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+}
+
+.building__text_type_upper {
+  max-width: 600px;
+}
+
+.building__text_type_lower {
+  max-width: 900px;
+}

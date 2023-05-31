@@ -9,12 +9,21 @@ import "../../fonts/fonts.css";
 
 // ********** Contexts **********
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { ValidationContext } from "../../contexts/ValidationContext";
 
 // ********** Site Components **********
 import { userDropdown } from "../../utils/constants";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import AboutUs from "../AboutUs/AboutUs";
+import StillBuilding from "../StillBuilding/StillBuilding";
 import DeveloperPanel from "../DeveloperPanel/DeveloperPanel";
+
+// ********** Modals **********
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
+import ProductViewModal from "../ProductViewModal/ProductViewModal";
+import UserUpdateProfileModal from "../UserUpdateProfileModal/UserUpdateProfileModal";
 
 function App() {
   const [isDevMode, setIsDevMode] = useState(false);
@@ -78,6 +87,8 @@ function App() {
     closeModal();
   }
 
+  function handleUpdateSubmit() {}
+
   function handleLogOut() {
     setIsLoggedIn(false);
     history.push("/");
@@ -92,7 +103,7 @@ function App() {
     setIsAdmin(!isAdmin);
   }
 
-  function addToCart(e) {
+  function handleAddToCart(e) {
     e.stopPropagation();
     if (isLoggedIn) {
       closeModal();
@@ -101,6 +112,8 @@ function App() {
       setActiveModal("signup");
     }
   }
+
+  function handleRemoveFromCart() {}
 
   // ********** Modal Tools **********
 
@@ -180,6 +193,14 @@ function App() {
           selectSignUp={selectSignUp}
           history={history}
         />
+        <Switch>
+          <Route path='/about'>
+            <AboutUs />
+          </Route>
+          <Route path='/building'>
+            <StillBuilding />
+          </Route>
+        </Switch>
         <Footer />
         {isDevMode ? (
           <DeveloperPanel
@@ -189,10 +210,59 @@ function App() {
         ) : (
           <></>
         )}
-        {isDevMode ? <div></div> : <></>}
-        {activeModal === "login" && <div></div>}
-        {activeModal === "signup" && <div></div>}
-        {activeModal === "productpreview" && <div></div>}
+        {activeModal === "login" && (
+          <ValidationContext.Provider
+            value={{
+              errorDisplay,
+              disableButton,
+              handleLoginSubmit,
+              closeActiveModal,
+              setActiveModal,
+              handleModalErrorDisplay,
+              setDisableButton,
+            }}
+          >
+            <LoginModal isLoading={isLoading} />
+          </ValidationContext.Provider>
+        )}
+        {activeModal === "signup" && (
+          <ValidationContext.Provider
+            value={{
+              errorDisplay,
+              disableButton,
+              handleSignUpSubmit,
+              closeActiveModal,
+              setActiveModal,
+              handleModalErrorDisplay,
+              setDisableButton,
+            }}
+          >
+            <RegisterModal isLoading={isLoading} />
+          </ValidationContext.Provider>
+        )}
+        {activeModal === "update" && (
+          <ValidationContext.Provider
+            value={{
+              errorDisplay,
+              disableButton,
+              handleUpdateSubmit,
+              closeActiveModal,
+              setActiveModal,
+              handleModalErrorDisplay,
+              setDisableButton,
+            }}
+          >
+            <UserUpdateProfileModal isLoading={isLoading} />
+          </ValidationContext.Provider>
+        )}
+        {activeModal === "productpreview" && (
+          <ProductViewModal
+            card={activeCard}
+            handleAddToCart={handleAddToCart}
+            handleRemoveFromCart={handleRemoveFromCart}
+            closeActiveModal={closeActiveModal}
+          />
+        )}
       </CurrentUserContext.Provider>
     </div>
   );
