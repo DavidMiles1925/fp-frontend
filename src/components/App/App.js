@@ -20,6 +20,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import AboutUs from "../AboutUs/AboutUs";
+import ProductsPage from "../ProductsPage/ProductsPage";
 import StillBuilding from "../StillBuilding/StillBuilding";
 import DeveloperPanel from "../DeveloperPanel/DeveloperPanel";
 
@@ -222,6 +223,14 @@ function App() {
               //generateJoke={generateJoke}
               chuckJoke={chuckJoke}
               isLoading={isLoading}
+            />
+          </Route>
+          <Route path='/products'>
+            <ProductsPage
+              productList={productList}
+              handleCardClick={handleCardClick}
+              handleAddToCart={handleAddToCart}
+              handleRemoveFromCart={handleRemoveFromCart}
             />
           </Route>
           <Route path='/'>
