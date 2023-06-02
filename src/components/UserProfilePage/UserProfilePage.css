@@ -1,0 +1,18 @@
+.user-profile {
+  display: flex;
+  min-height: 250px;
+  width: 95%;
+  max-width: 1440px;
+}
+
+.user-profile__sidebar-container {
+  min-width: 180px;
+  display: flex;
+}
+
+@media screen and (max-width: 800px) {
+  .user-profile {
+    min-height: 0px;
+    max-height: 200px;
+  }
+}

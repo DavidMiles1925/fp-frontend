@@ -88,26 +88,33 @@
   align-items: center;
 }
 
-.modal__submit {
-  width: 124px;
-  height: 36px;
-  padding: 8px, 16px, 8px, 16px;
-  margin: 24px 0px;
-  font-family: "Bruno-Ace", Arial, sans-serif;
-}
-
 .modal__buton-container {
   display: flex;
   flex-direction: row;
 }
 
 .modal__submit {
-  cursor: pointer;
+  width: 124px;
+  height: 36px;
+  padding: 8px, 16px, 8px, 16px;
+  margin: 24px 0px;
   border: none;
   border-radius: 2px;
   background-color: black;
   color: white;
+  font-family: "Bruno-Ace", Arial, sans-serif;
   font-size: 16px;
+  transition: 0.1s;
+}
+
+.modal__submit:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
+.modal__submit:active {
+  transform: scale(1);
 }
 
 .modal__submit:disabled {
@@ -123,11 +130,14 @@
   line-height: 20px;
   font-weight: bold;
   margin: 0 8px 0;
+  transition: 0.1s;
 }
 
 .modal__button-modifier:hover {
   color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  opacity: 0.6;
+  transform: scale(1.1);
 }
 
 .modal__error {

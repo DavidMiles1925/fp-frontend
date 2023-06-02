@@ -8,19 +8,27 @@ import "./App.css";
 
 // ********** API **********
 import { database } from "../../utils/mockServer";
-import { getJoke } from "../../utils/chuckNorrisApi";
+// import { getJoke } from "../../utils/chuckNorrisApi";
 
 // ********** Contexts **********
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { ValidationContext } from "../../contexts/ValidationContext";
 
-// ********** Site Components **********
-import { userDropdown } from "../../utils/constants";
+// ********** Main Site Components **********
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import AboutUs from "../AboutUs/AboutUs";
 import ProductsPage from "../ProductsPage/ProductsPage";
+
+// ********** User Profile Components **********
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { userDropdown } from "../../utils/constants";
+import UserProfilePage from "../UserProfilePage/UserProfilePage";
+import UserInformationPage from "../UserInformationPage/UserInformationPage";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+
+// ********** Developer Components **********
 import StillBuilding from "../StillBuilding/StillBuilding";
 import DeveloperPanel from "../DeveloperPanel/DeveloperPanel";
 
@@ -59,6 +67,11 @@ function App() {
     return firstletter;
   }
 
+  function convertToFloat(string) {
+    var floatValue = +string;
+    return floatValue;
+  }
+
   /*
   function generateJoke() {
     setIsLoading(true);
@@ -89,6 +102,10 @@ function App() {
     setActiveCard(card);
   }
 
+  function handleUpdateClick() {
+    setActiveModal("update");
+  }
+
   // ********** Submission Handlers **********
   function handleLoginSubmit(user) {
     setIsLoading(true);
@@ -97,7 +114,6 @@ function App() {
       setCurrentUser(user);
       setAlternateAvatar(getUserFirstLetter(user.name));
       setIsLoggedIn(true);
-      setActiveMenuSelection(userDropdown[0]);
       closeModal();
     } else {
       setErrorDisplay({ value: true, message: "Invalid email or password." });
@@ -110,7 +126,9 @@ function App() {
     closeModal();
   }
 
-  function handleUpdateSubmit() {}
+  function handleUpdateSubmit(values) {
+    console.log(values);
+  }
 
   function handleLogOut() {
     setIsLoggedIn(false);
@@ -126,8 +144,8 @@ function App() {
     setIsAdmin(!isAdmin);
   }
 
-  function handleAddToCart(e) {
-    e.stopPropagation();
+  function handleAddToCart(_id) {
+    console.log(_id);
     if (isLoggedIn) {
       closeModal();
       history.push("building");
@@ -137,6 +155,36 @@ function App() {
   }
 
   function handleRemoveFromCart() {}
+
+  function adjustCartTotalForPriceChanges(cartItems) {
+    let currentTotal = 0;
+
+    for (let item = 0; item < cartItems.length; item++) {
+      currentTotal = currentTotal + convertToFloat(cartItems[item].price);
+    }
+
+    currentTotal = String(currentTotal);
+
+    if (currentTotal !== currentUser.cartTotal) {
+      console.log(
+        "An item in your cart has experienced a price change, or has been discontinued."
+      );
+
+      /*
+      const token = localStorage.getItem("token");
+      updateCartTotal(String(currentTotal), token)
+        .then((user) => {
+          setCurrentUser(user);
+          console.log(
+            "An item in your cart has experienced a price change, or has been discontinued."
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+        */
+    }
+  }
 
   // ********** Modal Tools **********
 
@@ -233,12 +281,40 @@ function App() {
               handleRemoveFromCart={handleRemoveFromCart}
             />
           </Route>
+          <ProtectedRoute path='/userprofile'>
+            <div className='app__profile-page-container'>
+              <UserProfilePage history={history} />
+              <Switch>
+                <ProtectedRoute exact path='/userprofile/building'>
+                  <StillBuilding />
+                </ProtectedRoute>
+                <ProtectedRoute exact path='/userprofile/userinfo'>
+                  <UserInformationPage handleUpdateClick={handleUpdateClick} />
+                </ProtectedRoute>
+                <ProtectedRoute exact path='/userprofile/usercart'>
+                  <ShoppingCart
+                    productList={productList}
+                    handleCardClick={handleCardClick}
+                    handleAddToCart={handleAddToCart}
+                    handleRemoveFromCart={handleRemoveFromCart}
+                    adjustCartTotalForPriceChanges={
+                      adjustCartTotalForPriceChanges
+                    }
+                    history={history}
+                  />
+                </ProtectedRoute>
+                <Route path='/'>
+                  <Main
+                    //generateJoke={generateJoke}
+                    chuckJoke={chuckJoke}
+                    isLoading={isLoading}
+                  />
+                </Route>
+              </Switch>
+            </div>
+          </ProtectedRoute>
           <Route path='/'>
-            <Main
-              //generateJoke={generateJoke}
-              chuckJoke={chuckJoke}
-              isLoading={isLoading}
-            />
+            <Main />
           </Route>
         </Switch>
         <Footer />

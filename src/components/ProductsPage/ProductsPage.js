@@ -14,7 +14,6 @@ function ProductsPage({
   const [currentCategory, setCurrentCategory] = useState("all");
 
   const dropdownOptions = {
-    openOnWideScreen: true,
     titleText: "Products",
     dropdownItems: productCatalog,
   };

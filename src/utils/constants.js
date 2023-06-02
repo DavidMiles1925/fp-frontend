@@ -27,23 +27,23 @@ const productCatalog = [
 ];
 
 const userDropdown = [
-  { text: "My Profile", path: "/userprofile" },
+  { text: "My Profile", path: "/userprofile/userinfo" },
   { text: "My Cart", path: "/userprofile/usercart" },
   {
-    text: "Customer Service",
-    path: "/building",
+    text: "My Orders",
+    path: "/userprofile/building",
   },
   { text: "Log Out", path: "logout" },
 ];
 
 const userSidebar = [
-  { text: "Your Cart", path: "/userprofile/usercart" },
-  { text: "Your Information", path: "/userprofile/building" },
+  { text: "My Cart", path: "/userprofile/usercart" },
+  { text: "My Information", path: "/userprofile/userinfo" },
   {
-    text: "Your Orders",
+    text: "My Orders",
     path: "/userprofile/building",
   },
-  { text: "Log In and Security", path: "/userprofile/building" },
+  { text: "Log Out", path: "logout" },
 ];
 
 export {

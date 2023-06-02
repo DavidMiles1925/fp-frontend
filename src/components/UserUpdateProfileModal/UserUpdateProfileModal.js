@@ -8,7 +8,7 @@ import "./UserUpdateProfileModal.css";
 
 function UserUpdateProfileModal({ isLoading }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const { setDisableButton, handleUpdateSubmit, closeActiveModal } =
+  const { setDisableButton, handleUpdateSubmit } =
     useContext(ValidationContext);
   const { values, errors, isValid, handleChange, setValues } =
     useFormAndValidation();

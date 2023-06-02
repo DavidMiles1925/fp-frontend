@@ -1,8 +1,10 @@
-const whiteTShirtImage = require("../images/merch/white-t.png");
-const blackTShirtImage = require("../images/merch/black-t.png");
-const whiteHatImage = require("../images/merch/white-hat.png");
-const blackHatImage = require("../images/merch/black-hat.png");
-const whiteHoodieImage = require("../images/merch/white-hoodie.png");
+import {
+  WHITE_HAT_IMAGE,
+  BLACK_HAT_IMAGE,
+  WHITE_SHIRT_IMAGE,
+  BLACK_SHIRT_IMAGE,
+  WHITE_HOODIE_IMAGE,
+} from "../images/base64/base64Images";
 
 const database = {
   users: [
@@ -18,25 +20,10 @@ const database = {
         apt: "42",
         city: "The Shire",
         state: "Florida",
-        zip: "80085",
+        zip: "07734",
       },
       cart: ["002", "003"],
-    },
-    {
-      _id: "002",
-      admin: "true",
-      email: "frodobaggins@hobbitbook.com",
-      password: "password",
-      name: "Frodo Baggins",
-      phone: "1234567890",
-      address: {
-        street: "1600 Pennsylvania Ave",
-        apt: "42",
-        city: "The Shire",
-        state: "Florida",
-        zip: "80085",
-      },
-      cart: [],
+      cartTotal: "59.58",
     },
   ],
   products: [
@@ -46,7 +33,7 @@ const database = {
       description:
         "The classic T-Shirt. Wear it when you want to channel some of that awesome Ben Energy.",
       price: "24.99",
-      image: whiteTShirtImage,
+      image: WHITE_SHIRT_IMAGE,
       link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       category: "tshirts",
     },
@@ -56,7 +43,7 @@ const database = {
       description:
         "The classic T-Shirt. Wear it when you want to channel some of that awesome Ben Energy.",
       price: "24.99",
-      image: blackTShirtImage,
+      image: BLACK_SHIRT_IMAGE,
       link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       category: "tshirts",
     },
@@ -66,7 +53,7 @@ const database = {
       description:
         "The classic Hat. Wear it when you want to channel some of that awesome Ben Energy.",
       price: "34.99",
-      image: whiteHatImage,
+      image: WHITE_HAT_IMAGE,
       link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       category: "hats",
     },
@@ -76,7 +63,7 @@ const database = {
       description:
         "The classic Hat. Wear it when you want to channel some of that awesome Ben Energy.",
       price: "34.99",
-      image: blackHatImage,
+      image: BLACK_HAT_IMAGE,
       link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       category: "hats",
     },
@@ -86,7 +73,7 @@ const database = {
       description:
         "The classic Hat. Wear it when you want to channel some of that awesome Ben Energy.",
       price: "39.99",
-      image: whiteHoodieImage,
+      image: WHITE_HOODIE_IMAGE,
       link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       category: "hoodies",
     },

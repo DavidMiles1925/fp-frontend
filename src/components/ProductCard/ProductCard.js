@@ -11,7 +11,7 @@ function ProductCard({
 }) {
   const { currentUser } = useContext(CurrentUserContext);
   const { image, price, name } = card;
-  //const newImage = `data:image/png;base64, ${image}`;
+  const newImage = `data:image/png;base64, ${image}`;
 
   const isInCart = currentUser
     ? currentUser.cart.some((item) => item === card._id)
@@ -40,7 +40,7 @@ function ProductCard({
       }}
     >
       <div className='card__image-container'>
-        <img className='card__image' src={image} alt='Product' />
+        <img className='card__image' src={newImage} alt='Product' />
       </div>
       <div className='card__header'>
         <div className='card__text-container'>

@@ -18,7 +18,7 @@ function JokeGenerator({ generateJoke, chuckJoke, isLoading }) {
         <button
           className='main__api-generate-button'
           type='button'
-          //onClick={handleJokeClick}
+          // onClick={handleJokeClick}
         >
           Generate Joke
         </button>
