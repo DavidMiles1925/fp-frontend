@@ -5,13 +5,16 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 
 ## Table Of Contents
 
-**1 - Project Features**  
+**1 - Project Features**
+
 **-- 1.1 -** Code Layout and Semantics  
 -- 1.1.1 BEM Methodology  
--- 1.1.2 Naming Conventions  
+-- 1.1.2 Naming Conventions
+
 **-- 1.2 -** React App  
 -- 1.2.1 Functional Components  
--- 1.2.2 Contexts  
+-- 1.2.2 Contexts
+
 **-- 1.3 -** Notable Features  
 -- 1.3.1 Embeded Content  
 -- 1.3.2 Animations  
@@ -19,24 +22,29 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 -- 1.3.4 Dropdown Menu  
 -- 1.3.4 Chuck NorrisJoke Generator  
 -- 1.3.5 Passing Images Through JSON  
--- 1.3.6 Responsive Design  
+-- 1.3.6 Responsive Design
+
 **-- 1.4 -** Responsive Design  
 -- 1.4.1 Flexbox  
 -- 1.4.2 Grid Layout
 
-**2 - Future Development Plans**  
+**2 - Future Development Plans**
+
 **-- 2.1 -** User Profile  
 -- 2.1.1 Sales API  
 -- 2.1.2 Order Tracker  
--- 2.1.3 Change Password  
+-- 2.1.3 Change Password
+
 **-- 2.2 -** Physical Product Development  
 -- 2.1.1 Clothing  
--- 2.1.1 Trinkets  
+-- 2.1.1 Trinkets
+
 **-- 2.3 -** Complete Documentation
+
 **-- 2.4 -** Main Page Content
 
 **3 - Documentation** - UNDER CONSTRUCTION  
-**-- 3.1 -** Components
+**-- 3.1 -** Components  
 -- 3.1.1 App  
 -- 3.1.2 CardSection  
 -- 3.1.3 CardViewModal  
@@ -82,7 +90,10 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 
 ### 1.1 - Code Layout and Semantics
 
-**-- 1.1.1** BEM Methodology  
+**-- 1.1.1** BEM Methodology
+
+![BEM](./src/images/readme/bem_methodology.png)
+
 **-- 1.1.2** Naming Conventions
 
 Strict naming conventions were used to ensure consistency and readability, as well as to help avoid naming conflicts.
@@ -111,23 +122,31 @@ Since this project is dedicated to promoting a YouTube channel, it's only natura
 
 **-- 1.3.2** Animations
 
-To enhance the user experience, as well as avoid confusion, All buttons and links are animated. They use a pointer cursor, as well as scale up 10% when hovering the cursor over them. Most of them respond by scaling down when clicked.
+To enhance the user experience, as well as avoid confusion, All buttons and links are animated. They use a pointer cursor, as well as scale up 10% when hovering the cursor over them. They also respond by scaling down when clicked, except in a few special cases.
 
 **-- 1.3.3** Form Validation
 
 All forms are validated before sending requests to the server. A custom hook, `useFormAndValidation`, was used for single-line impletation in each form.
 
+![useFormAndValidation](./src/images/readme/useformandvalidation.png)
+
 **-- 1.3.4** Dropdown Menu
 
 Menus were created to be collapsible in order to support all screen sizes.
+
+![Dropdown Fullscreen](./src/images/readme/dropdown_fullscreen.png) ![Dropdown Mobile](./src/images/readme/dropdown_mobile.png)
 
 **-- 1.3.4** Chuck Norris Joke Generator
 
 One reqirement of this project was to include the use of a third-part API. The creator of the YouTube channel loves Chuck Norris jokes, so we decided a joke generator would make a good addition to the main page.
 
+![Joke Generator](./src/images/readme/joke_generator.png)
+
 **-- 1.3.5** Passing Images Through JSON
 
 In future versions, an admin user will be able to create new products. Connecting an image by URL is not ideal for displaying custom photos, so a user will be able to select a photo from their local machine. In order to continue using JSON format, images will be converted to base64 strings. The app has been configured to display images in a method that is consistent with receiving base64 strings as image data. Some example strings have been included in the front end image folder.
+
+![Base64](./src/images/readme/base64.png)
 
 **-- 1.3.6** Responsive Design
 
@@ -155,6 +174,8 @@ In a world of a thousand passords, it is easy to forget what one might have used
 
 The example items currently featured on the site are all clothing products. These will be relatively cheap and easy to obtain when our YouTube creator is really ready to take off. Shirts, hats, hoodies, etc.
 
+![Clothing](./src/images/merch/white-t.png)
+
 **-- 2.1.2** Trinkets
 
 Things like bumper stickers and key chains could be options in the distant future for sales and brand promotion.
@@ -167,13 +188,13 @@ This is currently only a small side project. Later on, if this endevour is scale
 
 **-- 2.1.1** User Documentation
 
-This will include an FAQ for users to peruse, as well as some helpful tips for navigating the website and order process as easily as possible.
+This will include an FAQ for users to explore, as well as some helpful tips for navigating the website and order process as easily as possible.
 
 ### 2.4 - Main Page Content
 
 Currently the main page is lacking in rich content. The creation of more videos, as well as time spent growing the brand will allow for the creation of better and more abundant content.
 
-## 3 - Documentation
+## 3 - Documentation - UNDER CONSTRUCTION
 
 ### 3.1 - Components
 
@@ -214,18 +235,18 @@ Random Chuck Norris joke populate by \*\*`getJoke`
 
 -- -- 3.1.1.10 `currentUser`  
 -object-  
--params: -
+-keys: -
 
 -- -- 3.1.1.11 `disableButton`
 -bool-
 
 -- -- 3.1.1.12 `errorDisplay`  
 -object-  
--params: bool, string-
+-keys: value(bool), string-
 
 -- -- 3.1.1.13 `productList`  
 -object-  
--params:-  
+-keys:-  
 Holds the list of products do be displayed on the _3.1.15_ `ProductsPage`.
 
 -- -- Fuctions  
@@ -309,13 +330,13 @@ Holds the list of products do be displayed on the _3.1.15_ `ProductsPage`.
 -- -- 3.3.1.4 `processServerReponse`  
 -- -- 3.3.1.5 `request`  
 **-- 3.3.2 `auth`**  
--- -- 3.3.2.1 `addToCart`
--- -- 3.3.2.2 `checkToken`
--- -- 3.3.2.3 `removeFromCart`
--- -- 3.3.2.4 `signin`
--- -- 3.3.2.5 `signup`
--- -- 3.3.2.6 `updateCartTotal`
--- -- 3.3.2.7 `updateUser`
+-- -- 3.3.2.1 `addToCart`  
+-- -- 3.3.2.2 `checkToken`  
+-- -- 3.3.2.3 `removeFromCart`  
+-- -- 3.3.2.4 `signin`  
+-- -- 3.3.2.5 `signup`  
+-- -- 3.3.2.6 `updateCartTotal`  
+-- -- 3.3.2.7 `updateUser`  
 **-- 3.3.3 `chuckNorrisApi`**  
 -- -- 3.3.3.1 `getJoke`  
 **-- 3.3.4 `constants`**  
