@@ -198,7 +198,8 @@ Currently the main page is lacking in rich content. The creation of more videos,
 
 ### 3.1 - Components
 
-**-- 3.1.1 `App`**  
+**-- 3.1.1 `App`**
+
 -- -- Variables
 
 -- -- 3.1.1.1 `isAdmin` - `true` if user has admin privilages (furture development)
@@ -249,7 +250,8 @@ Random Chuck Norris joke populate by \*\*`getJoke`
 -keys:-  
 Holds the list of products do be displayed on the _3.1.15_ `ProductsPage`.
 
--- -- Fuctions  
+-- -- Fuctions
+
 -- -- 3.1.1.14 `adjustCartTotalForPriceChanges`  
 -- -- 3.1.1.15 `closeActiveModal`  
 -- -- 3.1.1.16 `closeModal`  
