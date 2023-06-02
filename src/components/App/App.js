@@ -8,7 +8,7 @@ import "./App.css";
 
 // ********** API **********
 import { database } from "../../utils/mockServer";
-// import { getJoke } from "../../utils/chuckNorrisApi";
+import { getJoke } from "../../utils/chuckNorrisApi";
 
 // ********** Contexts **********
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -72,7 +72,6 @@ function App() {
     return floatValue;
   }
 
-  /*
   function generateJoke() {
     setIsLoading(true);
     getJoke()
@@ -86,7 +85,7 @@ function App() {
       .finally(() => {
         setIsLoading(false);
       });
-  }*/
+  }
 
   // ********** User Selections **********
   function selectLogin() {
@@ -221,11 +220,9 @@ function App() {
     setProductList(database.products);
   }, []);
 
-  /*
   useEffect(() => {
     generateJoke();
   }, []);
-  */
 
   useEffect(() => {
     if (!activeModal) return;
@@ -268,7 +265,7 @@ function App() {
           </Route>
           <Route path='/main'>
             <Main
-              //generateJoke={generateJoke}
+              generateJoke={generateJoke}
               chuckJoke={chuckJoke}
               isLoading={isLoading}
             />
@@ -305,7 +302,7 @@ function App() {
                 </ProtectedRoute>
                 <Route path='/'>
                   <Main
-                    //generateJoke={generateJoke}
+                    generateJoke={generateJoke}
                     chuckJoke={chuckJoke}
                     isLoading={isLoading}
                   />

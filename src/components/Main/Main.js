@@ -7,7 +7,7 @@ function Main({ generateJoke, chuckJoke, isLoading }) {
     <main className='main'>
       <div className='main__parent'>
         <JokeGenerator
-          // generateJoke={generateJoke}
+          generateJoke={generateJoke}
           chuckJoke={chuckJoke}
           isLoading={isLoading}
         />
