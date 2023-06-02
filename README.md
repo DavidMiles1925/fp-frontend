@@ -38,40 +38,6 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 **3 - Documentation**
 **-- 3.1 -** Components
 -- 3.1.1 App  
--- -- Variables  
--- -- 3.1.1.1 isAdmin  
--- -- 3.1.1.2 isDevMode  
--- -- 3.1.1.3 isLoading  
--- -- 3.1.1.4 isLoggedIn  
--- -- 3.1.1.5 activeCard  
--- -- 3.1.1.6 activeMenuSelection  
--- -- 3.1.1.7 activeModal  
--- -- 3.1.1.8 alternateAvatar  
--- -- 3.1.1.9 chuckJoke  
--- -- 3.1.1.10 currentUser  
--- -- 3.1.1.11 disableButton  
--- -- 3.1.1.12 errorDisplay  
--- -- 3.1.1.13 productList  
--- -- Fuctions  
--- -- 3.1.1.14 adjustCartTotalForPriceChanges  
--- -- 3.1.1.15 closeActiveModal  
--- -- 3.1.1.16 closeModal  
--- -- 3.1.1.17 convertToFloat  
--- -- 3.1.1.18 generateJoke  
--- -- 3.1.1.19 getUserFirstLetter  
--- -- 3.1.1.20 handleAddToCart  
--- -- 3.1.1.21 handleCardClick  
--- -- 3.1.1.22 handleLoginSubmit  
--- -- 3.1.1.23 handleLogOut  
--- -- 3.1.1.24 handleUpdateClick  
--- -- 3.1.1.25 handleUpdateSubmit  
--- -- 3.1.1.26 handleRemoveFromCart  
--- -- 3.1.1.27 handleSignUpSubmit  
--- -- 3.1.1.28 handleToggleAdmin  
--- -- 3.1.1.29 handleToggleLogin  
--- -- 3.1.1.30 selectLogin  
--- -- 3.1.1.31 selectSignUp  
--- -- 3.1.1.32 handleModalErrorDislay  
 -- 3.1.2 CardSection  
 -- 3.1.3 CardViewModal  
 -- 3.1.4 ContactInfo  
@@ -89,34 +55,14 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 -- 3.1.16 ProductViewModal  
 -- 3.1.17 ProtectedRoute  
 -- 3.1.18 RegisterModal  
--- -- 3.1.1.2.2 handlePhoneChange  
--- -- 3.1.1.2.2 handleSubmit  
 -- 3.1.19 ShoppingCart  
 -- 3.1.20 SideBarMenu  
--- -- 3.1.1.2 handleCategoryClick  
--- -- 3.1.1.2 handleResize  
--- -- 3.1.1.2 handleTopClick  
--- -- 3.1.1.2 toggleDropdown  
 -- 3.1.21 StillBuilding  
 -- 3.1.22 UserDropdownMenu  
--- -- 3.1.22.1 isOpen  
--- -- 3.1.22.2 handleLinkClick  
--- -- 3.1.22.3 handleTopClick  
--- -- 3.1.22.4 toggleDropdown  
 -- 3.1.23 UserInformationPage  
--- -- 3.1.23.1 formattedPhoneNumber  
--- -- 3.1.23.2 formatPhoneNumber  
 -- 3.1.24 UserProfilePage  
 -- 3.1.25 UserSidebarMenu  
--- -- 3.1.25.1 formattedPhoneNumber  
--- -- 3.1.25.2 handleMenuClick  
--- -- 3.1.25.3 handleResize  
--- -- 3.1.25.4 handleTopClick  
--- -- 3.1.25.5 toggleDropdown  
--- 3.1.26 UserUpdateProfileModal  
--- -- 3.1.26.1 formatPhoneNumber  
--- -- 3.1.26.2 handlePhoneChange  
--- -- 3.1.26.3 handleSubmit
+-- 3.1.26 UserUpdateProfileModal
 
 **-- 3.2 -** Contexts  
 -- 3.2.1 CurrentUserContext  
@@ -125,30 +71,10 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 
 **-- 3.3 -** Utils  
 -- 3.3.1 api  
--- -- 3.3.1.1 createProduct  
--- -- 3.3.1.2 deleteProduct  
--- -- 3.3.1.3 getProducts  
--- -- 3.3.1.4 processServerReponse  
--- -- 3.3.1.5 request  
 -- 3.3.2 auth  
--- -- 3.3.2.1 addToCart
--- -- 3.3.2.2 checkToken
--- -- 3.3.2.3 removeFromCart
--- -- 3.3.2.4 signin
--- -- 3.3.2.5 signup
--- -- 3.3.2.6 updateCartTotal
--- -- 3.3.2.7 updateUser
 -- 3.3.3 chuckNorrisApi  
--- -- 3.3.3.1 getJoke  
 -- 3.3.4 constants  
--- -- 3.3.4.1 Text Constants  
--- -- 3.3.4.2 Dropdown Menus  
--- 3.3.5 useFormAndValidation  
--- -- 3.3.5.1 values  
--- -- 3.3.5.2 errors  
--- -- 3.3.5.3 isValid  
--- -- 3.3.5.4 handleChange  
--- -- 3.3.5.5 resetForm
+-- 3.3.5 useFormAndValidation
 
 **-- 3.4 -** Dependencies
 
@@ -199,20 +125,51 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 ### 3.1 - Components
 
 **-- 3.1.1 `App`**  
--- -- Variables  
--- -- 3.1.1.1 `isAdmin`  
--- -- 3.1.1.2 `isDevMode`  
+-- -- Variables
+
+-- -- 3.1.1.1 `isAdmin` - `true` if user has admin privilages (furture development)
+
+-- -- 3.1.1.2 `isDevMode` -bool- Set to `true` to enable _3.1.6_ `DeveloperPanel`.
+
 -- -- 3.1.1.3 `isLoading`  
+-bool-  
+Is set to `true` during asynchronous requests.
+
 -- -- 3.1.1.4 `isLoggedIn`  
--- -- 3.1.1.5 `activeCard`  
--- -- 3.1.1.6 `activeMenuSelection`  
+-bool-  
+ Is set to `true` when the user logs in.
+
+-- -- 3.1.1.5 `activeCard` -object- The data for _3.1.16_ `ProductViewModal`
+
+-- -- 3.1.1.6 `activeMenuSelection` -object- `setActiveMenuSelection` sets the active menu item for _3.1.20_ `SideBarMenu`, _3.1.22_ `UserDropdownMenu`, _3.1.25_`UserSidebarMenu`.
+
 -- -- 3.1.1.7 `activeModal`  
+-string-  
+`setActiveModal` sets the open modal window.
+
 -- -- 3.1.1.8 `alternateAvatar`  
+-string-
+Is set by `setAlternateAvatar(`_3.1.1.19_`getUserFirstLetter(`_3.1.1.10_`currentUser))` to be the first letter of the user's name.
+
 -- -- 3.1.1.9 `chuckJoke`  
+-string-
+
 -- -- 3.1.1.10 `currentUser`  
--- -- 3.1.1.11 `disableButton`  
+-object-  
+-params: -
+
+-- -- 3.1.1.11 `disableButton`
+-bool-
+
 -- -- 3.1.1.12 `errorDisplay`  
+-object-  
+-params: bool, string-
+
 -- -- 3.1.1.13 `productList`  
+-object-  
+-params:-  
+Holds the list of products do be displayed on the _3.1.15_ `ProductsPage`.
+
 -- -- Fuctions  
 -- -- 3.1.1.14 `adjustCartTotalForPriceChanges`  
 -- -- 3.1.1.15 `closeActiveModal`  
