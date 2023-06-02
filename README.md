@@ -174,7 +174,7 @@ In a world of a thousand passords, it is easy to forget what one might have used
 
 The example items currently featured on the site are all clothing products. These will be relatively cheap and easy to obtain when our YouTube creator is really ready to take off. Shirts, hats, hoodies, etc.
 
-![Clothing](./src/images/readme/white-t.png)
+![Clothing](./src/images/readme/clothing.png)
 
 **-- 2.1.2** Trinkets
 
