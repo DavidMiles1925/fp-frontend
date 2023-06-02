@@ -17,7 +17,6 @@ const contactInfo = {
   CITY: "Olathe",
   STATE: "Kansas",
   ZIP: "66062",
-  LINKEDIN: "https://www.linkedin.com/in/david-miles-a75a999a/",
 };
 
 const productCatalog = [
@@ -29,20 +28,24 @@ const productCatalog = [
 const userDropdown = [
   { text: "My Profile", path: "/userprofile/userinfo" },
   { text: "My Cart", path: "/userprofile/usercart" },
+  /*
   {
     text: "My Orders",
     path: "/userprofile/building",
   },
+  */
   { text: "Log Out", path: "logout" },
 ];
 
 const userSidebar = [
   { text: "My Cart", path: "/userprofile/usercart" },
   { text: "My Information", path: "/userprofile/userinfo" },
+  /*
   {
     text: "My Orders",
     path: "/userprofile/building",
   },
+  */
   { text: "Log Out", path: "logout" },
 ];
 

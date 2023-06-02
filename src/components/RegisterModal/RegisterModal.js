@@ -109,7 +109,7 @@ function RegisterModal({ isLoading }) {
         id='phone'
         placeholder='Phone'
         minLength={10}
-        maxLength={15}
+        maxLength={11}
         value={values.phone || ""}
         onChange={handlePhoneChange}
       />
