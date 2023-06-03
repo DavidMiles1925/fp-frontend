@@ -216,10 +216,12 @@ Is set to `true` during asynchronous requests.
 
 -- -- 3.1.1.5 `activeCard`  
 -object-  
-The data to populate _3.1.16_ `ProductViewModal`.
+-keys: _id, name, price, description, image, link, category-  
+The data to populate \_3.1.16_ `ProductViewModal`.
 
 -- -- 3.1.1.6 `activeMenuSelection`  
 -object-  
+keys: -text, path
 `setActiveMenuSelection` sets the active menu item for _3.1.20_ `SideBarMenu`, _3.1.22_ `UserDropdownMenu`, _3.1.25_`UserSidebarMenu`.
 
 -- -- 3.1.1.7 `activeModal`  
