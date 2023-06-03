@@ -310,9 +310,11 @@ function App() {
               </Switch>
             </div>
           </ProtectedRoute>
-          <Route path='/'>
-            <Main />
-          </Route>
+          <Main
+            generateJoke={generateJoke}
+            chuckJoke={chuckJoke}
+            isLoading={isLoading}
+          />
         </Switch>
         <Footer />
         {isDevMode ? (

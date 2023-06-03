@@ -207,72 +207,116 @@ Currently the main page is lacking in rich content. The creation of more videos,
 -- -- 3.1.1.2 `isDevMode` -bool- Set to `true` to enable _3.1.6_ `DeveloperPanel`.
 
 -- -- 3.1.1.3 `isLoading`  
--bool-  
+-bool-
+
 Is set to `true` during asynchronous requests.
 
 -- -- 3.1.1.4 `isLoggedIn`  
--bool-  
- Is set to `true` when the user logs in.
+-bool-
+
+Is set to `true` when the user logs in.
 
 -- -- 3.1.1.5 `activeCard`  
 -object-  
--keys: _id, name, price, description, image, link, category-  
-The data to populate \_3.1.16_ `ProductViewModal`.
+-keys: \_id, name, price, description, image, link, category-
+
+The data to populate \_3.1.16\_ `ProductViewModal`.
 
 -- -- 3.1.1.6 `activeMenuSelection`  
 -object-  
 keys: -text, path
+
 `setActiveMenuSelection` sets the active menu item for _3.1.20_ `SideBarMenu`, _3.1.22_ `UserDropdownMenu`, _3.1.25_`UserSidebarMenu`.
 
 -- -- 3.1.1.7 `activeModal`  
--string-  
+-string-
+
 `setActiveModal` sets the open modal window.
 
 -- -- 3.1.1.8 `alternateAvatar`  
--string-  
+-string-
+
 Is set by `setAlternateAvatar(`_3.1.1.19_`getUserFirstLetter(`_3.1.1.10_`currentUser))` to be the first letter of the user's name.
 
 -- -- 3.1.1.9 `chuckJoke`  
 -string-
-Random Chuck Norris joke populate by \*\*`getJoke`
+
+Random Chuck Norris joke populated by \*\*`getJoke`.
 
 -- -- 3.1.1.10 `currentUser`  
 -object-  
--keys: -
+-keys: \_id, admin, email, password, name, phone, address(keys: street, apt, city, state, zip), cart, cartTotal-
+
+User data pulled from `3.1.1.10mockServer`(future: from backend server).
 
 -- -- 3.1.1.11 `disableButton`
 -bool-
 
+Set to `true` to DISABLE submit button. State set by `setDisableButton`.
+
 -- -- 3.1.1.12 `errorDisplay`  
 -object-  
--keys: value(bool), string-
+-keys: value(bool), message(string)-
+
+Displays an error `message` on the active modal when `value` is set to `true`. State set by `setErrorDisplay`.
 
 -- -- 3.1.1.13 `productList`  
--object-  
--keys:-  
+-array-  
+-[(keys: \_id, name, price, description, image, link, category)...]-
+
 Holds the list of products do be displayed on the _3.1.15_ `ProductsPage`.
 
 -- -- Fuctions
 
--- -- 3.1.1.14 `adjustCartTotalForPriceChanges`  
--- -- 3.1.1.15 `closeActiveModal`  
--- -- 3.1.1.16 `closeModal`  
--- -- 3.1.1.17 `convertToFloat`  
--- -- 3.1.1.18 `generateJoke`  
--- -- 3.1.1.19 `getUserFirstLetter`  
--- -- 3.1.1.20 `handleAddToCart`  
--- -- 3.1.1.21 `handleCardClick`  
--- -- 3.1.1.22 `handleLoginSubmit`  
+-- -- 3.1.1.14 `adjustCartTotalForPriceChanges(cartItems)`
+
+Compares the `cartTotal` saved in the database to the current calculated total. This is to account for any price changes that occured, or products that were discontinued. The function then logs a message to the console (future: alerts the user that has been a change in their cart).
+
+-- -- 3.1.1.15 `closeActiveModal()`
+
+Used to enable functionality for closing the active modal by clicking in the space outside of it.
+
+-- -- 3.1.1.16 `closeModal()`
+
+Sets the vale of _3.1.1.7_ `activeModal` to `null` and resets _3.1.1.24_ `handleModalErrorDisplay`.
+
+-- -- 3.1.1.17 `convertToFloat(string)`
+
+Takes a string and returns a floating point number (future: and sets the decimal places to 2).
+
+-- -- 3.1.1.18 `generateJoke()`
+
+Returns a string from API-Ninja's Chuck Norris Joke API.
+ex: { joke: "When Chuck Norris does pushups, he pushes the world down."}
+
+-- -- 3.1.1.19 `getUserFirstLetter(string)`
+
+Returns the first letter of a string.
+
+-- -- 3.1.1.20 `handleAddToCart(_id, price)`
+
+Adds a product `_id` to the _3.1.1.10_ `currentUser`'s `cart` array and updates the `cartTotal`.
+
+-- -- 3.1.1.21 `handleCardClick(card)`
+{ \_id, name, price, description, image, link, category } = card
+
+Opens the `ProductViewModal` and populates it with `card`.
+
+-- -- 3.1.1.22 `handleLoginSubmit(user)`
+
+(future: Sends a request with _3.3.2.4_ `signin` to the backend server to log a user in.)
+
 -- -- 3.1.1.23 `handleLogOut`  
--- -- 3.1.1.24 `handleUpdateClick`  
--- -- 3.1.1.25 `handleUpdateSubmit`  
--- -- 3.1.1.26 `handleRemoveFromCart`  
--- -- 3.1.1.27 `handleSignUpSubmit`  
--- -- 3.1.1.28 `handleToggleAdmin`  
--- -- 3.1.1.29 `handleToggleLogin`  
--- -- 3.1.1.30 `selectLogin`  
--- -- 3.1.1.31 `selectSignUp`  
--- -- 3.1.1.32 `handleModalErrorDislay`  
+-- -- 3.1.1.24 `handleModalErrorDisplay`  
+-- -- 3.1.1.25 `handleUpdateClick`  
+-- -- 3.1.1.26 `handleUpdateSubmit`  
+-- -- 3.1.1.27 `handleRemoveFromCart`  
+-- -- 3.1.1.28 `handleSignUpSubmit`  
+-- -- 3.1.1.29 `handleToggleAdmin`  
+-- -- 3.1.1.30 `handleToggleLogin`  
+-- -- 3.1.1.31 `selectLogin`  
+-- -- 3.1.1.32 `selectSignUp`  
+-- -- 3.1.1.33 `handleModalErrorDislay`  
 **-- 3.1.2 `CardSection`**  
 **-- 3.1.3 `CardViewModal`**  
 **-- 3.1.4 `ContactInfo`**  
