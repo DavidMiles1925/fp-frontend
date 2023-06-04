@@ -44,3 +44,10 @@
   display: flex;
   flex-direction: row;
 }
+
+@media screen and (max-width: 800px) {
+  .cart__total {
+    text-align: center;
+    font-size: 12px;
+  }
+}

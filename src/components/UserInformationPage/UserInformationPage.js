@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import "./UserInformationPage.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { ValidationContext } from "../../contexts/ValidationContext";
 
 function UserInformationPage({ handleUpdateClick }) {
   const { currentUser } = useContext(CurrentUserContext);

@@ -7,7 +7,7 @@ import "./AboutUs.css";
 
 function AboutUs() {
   return (
-    <div className='about-us'>
+    <section className='about-us'>
       <div className='about-us__sidebar'>
         <h2 className='about-us__title'>About Us</h2>
       </div>
@@ -27,7 +27,7 @@ function AboutUs() {
           <p className='about-us__section-text'>{ABOUT_US_OUR_PLEDGE}</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

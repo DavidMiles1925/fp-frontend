@@ -11,7 +11,7 @@ const UserDropdownMenu = ({ dropdownItems, history }) => {
     alternateAvatar,
   } = useContext(CurrentUserContext);
 
-  const { id, image } = activeMenuSelection;
+  const { id } = activeMenuSelection;
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
@@ -31,7 +31,7 @@ const UserDropdownMenu = ({ dropdownItems, history }) => {
   }
 
   return (
-    <div className='dropdown'>
+    <section className='dropdown'>
       <div className='dropdown__title-container'>
         <button className='dropdown__toggle' onClick={handleTopClick} key={id}>
           {currentUser.name}
@@ -39,21 +39,21 @@ const UserDropdownMenu = ({ dropdownItems, history }) => {
         <p className='dropdown__default-avatar'>{alternateAvatar}</p>
       </div>
       {isOpen && (
-        <div className='dropdown__menu'>
+        <ul className='dropdown__menu'>
           {dropdownItems.map((item) => {
             return (
-              <div
+              <li
                 key={item.path}
                 className='dropdown__item'
                 onClick={() => handleLinkClick(item)}
               >
                 {item.text}
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       )}
-    </div>
+    </section>
   );
 };
 

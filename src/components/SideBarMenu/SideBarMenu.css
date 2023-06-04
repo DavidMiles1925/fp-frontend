@@ -3,6 +3,7 @@
   display: inline-block;
   margin-bottom: 24px;
   max-width: 300px;
+  max-height: 50px;
 }
 
 .side-dropdown__toggle {
@@ -33,6 +34,7 @@
   max-width: 220px;
   padding: 8px 0;
   transition: 0.1s;
+  list-style: none;
 }
 
 .side-dropdown__item {

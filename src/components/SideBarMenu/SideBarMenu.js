@@ -42,24 +42,24 @@ const SideBarMenu = ({ dropdownOptions }) => {
   }, []);
 
   return (
-    <div className='side-dropdown'>
+    <section className='side-dropdown'>
       <button className='side-dropdown__toggle' onClick={handleTopClick}>
         {titleText}
       </button>
       {isOpen && (
-        <div className='side-dropdown__menu'>
+        <ul className='side-dropdown__menu'>
           {dropdownItems.map((item) => (
-            <div
+            <li
               key={item.text}
               className='side-dropdown__item'
               onClick={() => handleCategoryClick(item.path)}
             >
               {item.text}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
-    </div>
+    </section>
   );
 };
 

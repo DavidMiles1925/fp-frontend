@@ -3,7 +3,7 @@ import "../../fonts/fonts.css";
 
 // ********** Tools **********
 import { Route, Switch, useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 
 // ********** API **********
@@ -29,7 +29,7 @@ import UserInformationPage from "../UserInformationPage/UserInformationPage";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 // ********** Developer Components **********
-import StillBuilding from "../StillBuilding/StillBuilding";
+import StillBuildingPage from "../StillBuildingPage/StillBuildingPage";
 import DeveloperPanel from "../DeveloperPanel/DeveloperPanel";
 
 // ********** Modals **********
@@ -37,7 +37,6 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProductViewModal from "../ProductViewModal/ProductViewModal";
 import UserUpdateProfileModal from "../UserUpdateProfileModal/UserUpdateProfileModal";
-import { useFormAndValidation } from "../../utils/useFormAndValidation";
 
 function App() {
   const [isDevMode, setIsDevMode] = useState(false);
@@ -197,10 +196,10 @@ function App() {
     }
   }
 
-  function closeModal() {
+  const closeModal = useCallback(() => {
     setActiveModal(null);
     handleModalErrorDisplay(false, "");
-  }
+  }, []);
 
   function handleModalErrorDisplay(value, message) {
     setErrorDisplay({ value, message });
@@ -225,6 +224,10 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setIsDevMode(false);
+  }, []);
+
+  useEffect(() => {
     if (!activeModal) return;
 
     const handleEscClose = (evt) => {
@@ -236,9 +239,10 @@ function App() {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, [activeModal]);
+  }, [activeModal, closeModal]);
+
   return (
-    <div className='App'>
+    <div className='app'>
       <CurrentUserContext.Provider
         value={{
           currentUser,
@@ -261,7 +265,7 @@ function App() {
             <AboutUs />
           </Route>
           <Route path='/building'>
-            <StillBuilding />
+            <StillBuildingPage />
           </Route>
           <Route path='/main'>
             <Main
@@ -283,7 +287,7 @@ function App() {
               <UserProfilePage history={history} />
               <Switch>
                 <ProtectedRoute exact path='/userprofile/building'>
-                  <StillBuilding />
+                  <StillBuildingPage />
                 </ProtectedRoute>
                 <ProtectedRoute exact path='/userprofile/userinfo'>
                   <UserInformationPage handleUpdateClick={handleUpdateClick} />
@@ -310,9 +314,11 @@ function App() {
               </Switch>
             </div>
           </ProtectedRoute>
-          <Route path='/'>
-            <Main />
-          </Route>
+          <Main
+            generateJoke={generateJoke}
+            chuckJoke={chuckJoke}
+            isLoading={isLoading}
+          />
         </Switch>
         <Footer />
         {isDevMode ? (

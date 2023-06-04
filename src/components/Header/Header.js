@@ -5,7 +5,7 @@ import UserDropdownMenu from "../UserDropdownMenu/UserDropdownMenu";
 import DividerCard from "../DividerCard/DividerCard";
 import { userDropdown } from "../../utils/constants";
 import "./Header.css";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo.svg";
 
 function Header({ selectLogin, selectSignUp, history }) {
   const { isLoggedIn, isAdmin } = useContext(CurrentUserContext);

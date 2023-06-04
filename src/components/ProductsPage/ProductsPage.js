@@ -20,17 +20,15 @@ function ProductsPage({
 
   return (
     <FilterContext.Provider value={{ currentCategory, setCurrentCategory }}>
-      <div className='products'>
-        <div className='products__side-bar'>
-          <SideBarMenu dropdownOptions={dropdownOptions} />
-        </div>
+      <section className='products'>
+        <SideBarMenu dropdownOptions={dropdownOptions} />
         <CardsSection
           cards={productList}
           handleCardClick={handleCardClick}
           handleAddToCart={handleAddToCart}
           handleRemoveFromCart={handleRemoveFromCart}
         />
-      </div>
+      </section>
     </FilterContext.Provider>
   );
 }

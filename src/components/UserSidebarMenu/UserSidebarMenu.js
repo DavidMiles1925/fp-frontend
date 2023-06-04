@@ -43,24 +43,24 @@ function UserSidebarMenu({ history, userProfileItems }) {
   }, []);
 
   return (
-    <div className='user-dropdown'>
+    <section className='user-dropdown'>
       <button className='user-dropdown__toggle' onClick={handleTopClick}>
         My Profile
       </button>
       {isOpen && (
-        <div className='user-dropdown__menu'>
+        <ul className='user-dropdown__menu'>
           {userProfileItems.map((item) => (
-            <div
+            <li
               key={item.text}
               className='user-dropdown__item'
               onClick={() => handleMenuClick(item)}
             >
               {item.text}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
-    </div>
+    </section>
   );
 }
 

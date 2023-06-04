@@ -62,6 +62,7 @@
   max-height: 200px;
   transition: 0.1s;
   box-shadow: -2px 2px;
+  list-style: none;
 }
 
 .dropdown__item {
