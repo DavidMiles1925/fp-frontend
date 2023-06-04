@@ -44,8 +44,4 @@ function DeveloperPanel({ handleToggleLogin, handleToggleAdmin }) {
   );
 }
 
-/*
-
-*/
-
 export default DeveloperPanel;
