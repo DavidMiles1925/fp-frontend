@@ -2,9 +2,9 @@ import {
   STILL_BUILDING_TEXT_LOWER,
   STILL_BUILDING_TEXT_UPPER,
 } from "../../utils/constants";
-import "./StillBuilding.css";
+import "./StillBuildingPage.css";
 
-function StillBuilding() {
+function StillBuildingPage() {
   return (
     <div className='building'>
       <div className='building__parent'>
@@ -20,4 +20,4 @@ function StillBuilding() {
   );
 }
 
-export default StillBuilding;
+export default StillBuildingPage;

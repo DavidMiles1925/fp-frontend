@@ -21,7 +21,7 @@ function ShoppingCart({
 
   useEffect(() => {
     adjustCartTotalForPriceChanges(cartItems);
-  }, []);
+  }, [adjustCartTotalForPriceChanges, cartItems]);
 
   return (
     <div className='cart'>

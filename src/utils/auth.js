@@ -52,7 +52,7 @@ function addToCart(_id, token) {
   return request(`${baseUrl}/users/${_id}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "Application/json",
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ _id }),
@@ -63,7 +63,7 @@ function removeFromCart(_id, token) {
   return request(`${baseUrl}/users/${_id}`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "Application/json",
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ _id }),
@@ -75,7 +75,7 @@ function updateCartTotal(cartTotal, token) {
   return request(`${baseUrl}/users/cart`, {
     method: "PATCH",
     headers: {
-      "Content-Type": "Application/json",
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ cartTotal }),

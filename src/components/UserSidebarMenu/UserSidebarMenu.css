@@ -2,6 +2,7 @@
   position: relative;
   display: inline-block;
   margin-bottom: 24px;
+  list-style: none;
 }
 
 .user-dropdown__toggle {

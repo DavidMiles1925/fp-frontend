@@ -11,7 +11,7 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 -- 1.1.1 BEM Methodology  
 -- 1.1.2 Naming Conventions
 
-**-- 1.2 -** React App  
+**-- 1.2 -** React app  
 -- 1.2.1 Functional Components  
 -- 1.2.2 Contexts
 
@@ -65,7 +65,7 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 -- 3.1.18 RegisterModal  
 -- 3.1.19 ShoppingCart  
 -- 3.1.20 SideBarMenu  
--- 3.1.21 StillBuilding  
+-- 3.1.21 StillBuildingPage  
 -- 3.1.22 UserDropdownMenu  
 -- 3.1.23 UserInformationPage  
 -- 3.1.24 UserProfilePage  
@@ -104,7 +104,7 @@ Strict naming conventions were used to ensure consistency and readability, as we
 
 -- All named constants are `UPPERCASE` with underscores separating words. This excludes menu populator data, which follow the naming conventions for variables.
 
-### 1.2 - React App
+### 1.2 - React app
 
 **-- 1.2.1** Functional Components
 
@@ -198,7 +198,7 @@ Currently the main page is lacking in rich content. The creation of more videos,
 
 ### 3.1 - Components
 
-**-- 3.1.1 `App`**
+**-- 3.1.1 `app`**
 
 -- -- Variables
 
@@ -342,7 +342,7 @@ Opens the `ProductViewModal` and populates it with `card`.
 -- -- 3.1.1.2 `handleResize`  
 -- -- 3.1.1.2 `handleTopClick`  
 -- -- 3.1.1.2 `toggleDropdown`  
-**-- 3.1.21 `StillBuilding`**  
+**-- 3.1.21 `StillBuildingPage`**  
 **-- 3.1.22 `UserDropdownMenu`**  
 -- -- 3.1.22.1 `isOpen`  
 -- -- 3.1.22.2 `handleLinkClick`  

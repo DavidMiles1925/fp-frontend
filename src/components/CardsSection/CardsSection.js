@@ -12,24 +12,22 @@ function CardsSection({
   const { currentCategory } = useContext(FilterContext);
 
   return (
-    <>
-      <ul className='cards__cards'>
-        {cards
-          .filter(
-            (card) =>
-              card.category === currentCategory || currentCategory === "all"
-          )
-          .map((fiteredCard) => (
-            <ProductCard
-              key={fiteredCard._id}
-              card={fiteredCard}
-              handleCardClick={handleCardClick}
-              handleAddToCart={handleAddToCart}
-              handleRemoveFromCart={handleRemoveFromCart}
-            />
-          ))}
-      </ul>
-    </>
+    <ul className='cards'>
+      {cards
+        .filter(
+          (card) =>
+            card.category === currentCategory || currentCategory === "all"
+        )
+        .map((fiteredCard) => (
+          <ProductCard
+            key={fiteredCard._id}
+            card={fiteredCard}
+            handleCardClick={handleCardClick}
+            handleAddToCart={handleAddToCart}
+            handleRemoveFromCart={handleRemoveFromCart}
+          />
+        ))}
+    </ul>
   );
 }
 
