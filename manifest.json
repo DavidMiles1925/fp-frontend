@@ -1,0 +1,15 @@
+{
+  "short_name": "Ben Miles & The Dad",
+  "name": "Ben Miles & The Dad",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "type": "image/png",
+      "sizes": "500x500"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

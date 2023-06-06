@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/sales_site_front_end/static/css/main.ac23094b.css",
+    "main.js": "/sales_site_front_end/static/js/main.1db1bf6e.js",
+    "static/js/787.c9748194.chunk.js": "/sales_site_front_end/static/js/787.c9748194.chunk.js",
+    "static/media/ben-hands-up.jpg": "/sales_site_front_end/static/media/ben-hands-up.7aa28318e112ca7bb382.jpg",
+    "static/media/BrunoAce-Regular.ttf": "/sales_site_front_end/static/media/BrunoAce-Regular.57d90f1b7b321c6768d4.ttf",
+    "static/media/logo.svg": "/sales_site_front_end/static/media/logo.7b94d09e86267a637aedd0717479ddc7.svg",
+    "static/media/close-button.svg": "/sales_site_front_end/static/media/close-button.a783d62cec4ebed5a96b.svg",
+    "index.html": "/sales_site_front_end/index.html",
+    "main.ac23094b.css.map": "/sales_site_front_end/static/css/main.ac23094b.css.map",
+    "main.1db1bf6e.js.map": "/sales_site_front_end/static/js/main.1db1bf6e.js.map",
+    "787.c9748194.chunk.js.map": "/sales_site_front_end/static/js/787.c9748194.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac23094b.css",
+    "static/js/main.1db1bf6e.js"
+  ]
+}
