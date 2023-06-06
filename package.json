@@ -2,7 +2,7 @@
   "name": "site_front_end",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://davidmiles1925.github.io/sales_site_front_end/",
+  "homepage": "https://www.dmwtwr.crabdance.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build && scp -r -i /home/davidmiles1925/.ssh/id_ed25519 ./build/* davidmiles1925@dmwtwr.crabdance.com:/home/davidmiles1925/frontend"
   },
   "eslintConfig": {
     "extends": [

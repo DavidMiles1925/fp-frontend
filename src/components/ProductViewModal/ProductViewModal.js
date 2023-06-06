@@ -10,7 +10,7 @@ function ProductViewModal({
   handleRemoveFromCart,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const { image, name, price, description } = card;
+  const { _id, image, name, price, description } = card;
   const newImage = `data:image/png;base64, ${image}`;
 
   const isInCart = currentUser.cart.some((item) => item === card._id);
@@ -24,9 +24,9 @@ function ProductViewModal({
   function handleCartClick(e) {
     e.stopPropagation();
     if (isInCart) {
-      handleRemoveFromCart(card._id);
+      handleRemoveFromCart(_id, price);
     } else {
-      handleAddToCart(card._id);
+      handleAddToCart(_id, price);
     }
   }
 

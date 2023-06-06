@@ -39,6 +39,7 @@
   cursor: pointer;
   font-family: "Bruno-Ace", Arial, sans-serif;
   transition: 0.1s;
+  list-style: none;
 }
 
 .user-dropdown__item:hover {

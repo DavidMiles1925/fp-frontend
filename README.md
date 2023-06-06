@@ -43,7 +43,7 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 
 **-- 2.4 -** Main Page Content
 
-**3 - Documentation** - UNDER CONSTRUCTION  
+**3 - Documentation**
 **-- 3.1 -** Components  
 -- 3.1.1 App  
 -- 3.1.2 CardSection  
@@ -83,6 +83,7 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 -- 3.3.3 chuckNorrisApi  
 -- 3.3.4 constants  
 -- 3.3.5 useFormAndValidation
+-- 3.3.6 Notes on Base64 Strings as Images with JSON
 
 **-- 3.4 -** Dependencies
 
@@ -196,176 +197,297 @@ Currently the main page is lacking in rich content. The creation of more videos,
 
 # 3 - Documentation
 
-## 3.1.1 Developer Documentation for the `App` Component
+Sure! Here's the developer documentation for the given code:
 
-The `App` component serves as the main entry point of the application. It manages the state and handles various user interactions and routing within the application. This documentation will provide an overview of the component's structure, state variables, and functions.
+## 3.1.1 App Component
 
-This developer documentation provides an overview of the `App` component and its related functions, state, and components. It outlines the component structure, including routing, modals, and page components, along with the contexts used to provide data and functionality to its descendants.
+The `App` component serves as the main entry point for the application. It is responsible for rendering different components based on the current route and managing the application state.
+
+### Dependencies
+
+The `App` component imports the following dependencies:
+
+- `react-router-dom`: Provides routing capabilities for React applications.
+  - `Route`: Renders a component based on the current route.
+  - `Switch`: Renders the first `Route` that matches the current route.
+  - `useHistory`: Provides access to the browser history object.
+- `react`: The core React library.
+  - `useCallback`: Returns a memoized callback function.
+  - `useEffect`: Runs a side effect function after the component renders.
+  - `useState`: Manages state variables in functional components.
+
+### Styles
+
+The `App` component imports CSS stylesheets for fonts and the main `App` component.
+
+### API
+
+The `App` component imports various API functions for interacting with the server and performing authentication and data retrieval operations.
+
+### Contexts
+
+The `App` component imports context providers and handlers for managing user data and validation.
+
+- `CurrentUserContext`: Provides the current user's data and related functions.
+- `ValidationContext`: Manages form validation and error messages.
+
+### Main Site Components
+
+The `App` component imports components used in the main site section of the application.
+
+- `Header`: Renders the application header.
+- `Footer`: Renders the application footer.
+- `Main`: Renders the main content of the application.
+- `AboutUs`: Renders the About Us page.
+- `ProductsPage`: Renders the products page.
+
+### User Profile Components
+
+The `App` component imports components used in the user profile section of the application.
+
+- `ProtectedRoute`: Renders a protected route that requires authentication.
+- `UserProfilePage`: Renders the user profile page.
+- `UserInformationPage`: Renders the user information page.
+- `ShoppingCart`: Renders the user's shopping cart.
+
+### Developer Components
+
+The `App` component imports components used in the developer section of the application.
+
+- `StillBuildingPage`: Renders the "Still Building" page.
+- `DeveloperPanel`: Renders the developer panel.
+
+### Modals
+
+The `App` component imports modal components used for user authentication and product previews.
+
+- `RegisterModal`: Renders the registration modal.
+- `LoginModal`: Renders the login modal.
+- `ProductViewModal`: Renders the product view modal.
+- `UserUpdateProfileModal`: Renders the user update profile modal.
 
 ### State Variables
 
-The `App` component defines several state variables using the `useState` hook to manage the application's state:
+The `App` component defines several state variables using the `useState` hook to manage different aspects of the application state:
 
-1. `isDevMode` (`boolean`): Represents whether the application is in developer mode or not.
-2. `productList` (`array`): Stores the list of products retrieved from the server.
-3. `chuckJoke` (`string`): Stores a Chuck Norris joke retrieved from the server.
-4. `currentUser` (`object`): Represents the currently logged-in user's data.
-5. `isLoggedIn` (`boolean`): Indicates whether a user is currently logged in or not.
-6. `isAdmin` (`boolean`): Represents whether the logged-in user has administrator privileges.
-7. `activeMenuSelection` (`object`): Stores the currently selected menu item.
-8. `alternateAvatar` (`string`): Stores an alternate avatar image for the current user.
-9. `activeModal` (`string`): Represents the active modal dialog being displayed.
-10. `activeCard` (`object`): Stores the data of the currently selected card.
-11. `disableButton` (`boolean`): Indicates whether buttons should be disabled or not.
-12. `errorDisplay` (`object`): Stores the error display state, including the error value and message.
-13. `isLoading` (`boolean`): Indicates whether a loading state is active.
+- `isDevMode`: Indicates whether the developer mode is enabled.
+- `productList`: Stores the list of products obtained from the server.
+- `chuckJoke`: Stores the Chuck Norris joke obtained from the server.
+- `currentUser`: Stores the current user's data.
+- `isLoggedIn`: Indicates whether the user is logged in.
+- `isAdmin`: Indicates whether the user has admin privileges.
+- `activeMenuSelection`: Stores the currently active menu selection.
+- `alternateAvatar`: Stores an alternate avatar for the user.
+- `activeModal`: Stores the currently active modal.
+- `activeCard`: Stores the currently active card (product).
+- `disableButton`: Indicates whether the modal button should be disabled.
+- `errorDisplay`: Stores the error display information.
+- `isLoading`: Indicates whether a loading state is active.
 
-### Functions
+### Import Statements
 
-The `App` component defines several functions that handle different user interactions and server requests:
+The component imports various dependencies, styles, API functions, and other components required for the application. These imports are organized into different sections:
 
-1. `getUserFirstLetter(name)`: Extracts the first letter of a user's name and returns it.
-2. `convertToFloat(string)`: Converts a string representation of a number to a float value and returns it.
-3. `generateJoke()`: Retrieves a Chuck Norris joke from the server and updates the `chuckJoke` state variable.
-4. `selectLogin()`: Sets the active modal to "login" when the user selects the login option.
-5. `selectSignUp()`: Sets the active modal to "signup" when the user selects the sign-up option.
-6. `handleCardClick(card)`: Sets the active modal to "productpreview" and updates the `activeCard` state variable when a card is clicked.
-7. `handleUpdateClick()`: Sets the active modal to "update" when the user clicks the update button.
-8. `handleLoginSubmit(user)`: Handles the submission of the login form and updates the state variables accordingly. It performs authentication with the provided user credentials and sets the `currentUser`, `alternateAvatar`, `isLoggedIn`, and `errorDisplay` state variables.
-9. `handleSignUpSubmit()`: Handles the submission of the sign-up form and redirects the user to the "building" page.
-10. `handleUpdateSubmit(values)`: Handles the submission of the user update form and logs the form values to the console.
-11. `handleLogOut()`: Logs out the user and sets the `isLoggedIn` state variable to `false`. It also redirects the user to the home page.
-12. `handleToggleLogin()`: Toggles the `isLoggedIn` state variable between `true` and `false` and sets the active menu selection to the default value.
-13. `handleToggleAdmin()`: Toggles the `isAdmin` state variable between `true` and `false`.
-14. `handleAddToCart(_id)`: Handles the addition of an item to the cart. If the user is logged in, it redirects to the "building" page; otherwise, it sets the active modal to "signup" to prompt the user to sign up.
-15. `handleRemoveFromCart()`: Handles the removal of an item from the cart (not implemented in the provided code).
-16. `adjustCartTotalForPriceChanges(cartItems)`: Calculates the current total price of items in the cart and compares it to the `currentUser.cartTotal` value. If there is a difference, it logs a message indicating a price change or discontinuation of an item in the cart (the server update code is commented out in the provided code).
-17. `closeActiveModal(evt)`: Closes the active modal when a click event occurs outside the modal or on the modal close/cancel button.
-18. `closeModal()`: Closes the active modal and resets the error display state.
-19. `handleModalErrorDisplay(value, message)`: Updates the error display state with the provided value and message.
-20. `handleEscClose(evt)`: Closes the active modal when the "Escape" key is pressed.
-21. `useEffect` hooks:
+- **Tools**: Imports necessary tools such as `Route`, `Switch`, and `useHistory` from `react-router-dom`, and `useCallback`, `useEffect`, and `useState` from `react`.
+- **Styles**: Imports CSS files for fonts and the `App` component itself.
+- **API**: Imports API functions for fetching data from external sources.
+- **Contexts**: Imports contexts used for managing application state.
+- **Main Site Components**: Imports components related to the main site, such as `Header`, `Footer`, `Main`, `AboutUs`, and `ProductsPage`.
+- **User Profile Components**: Imports components related to user profiles, including `ProtectedRoute`, `UserProfilePage`, `UserInformationPage`, and `ShoppingCart`.
+- **Developer Components**: Imports components specific to developers, such as `StillBuildingPage` and `DeveloperPanel`.
+- **Modals**: Imports various modal components used in the application, such as `RegisterModal`, `LoginModal`, `ProductViewModal`, and `UserUpdateProfileModal`.
 
-- Sets the active menu selection to the default value when the component mounts.
-- Initializes the `currentUser` state with an empty cart object when the component mounts.
-- Retrieves the list of products from the server and updates the `productList` state when the component mounts.
-- Generates a Chuck Norris joke from the server and updates the `chuckJoke` state when the component mounts.
-- Sets the `isDevMode` state to `false` when the component mounts.
-- Adds an event listener for the "Escape" key to close the active modal when it is open. Removes the event listener when the component unmounts.
+### Helper Functions
 
-Certainly! Here's a detailed developer documentation for all of the functions in the provided code:
+The `App` component defines several helper functions that are used within the component:
+
+#### 3.1.1.1 `getUserFirstLetter(name)`: Takes a user's name as input and returns the first letter of the name.
+
+#### 3.1.1.2 `convertToFloat(string)`: Converts a string representation of a number to a floating-point number.
+
+#### 3.1.1.3 `generateJoke()`: Fetches a Chuck Norris joke from the server and updates the `chuckJoke` state variable.
+
+#### 3.1.1.4 `selectLogin()`: Sets the active modal to the login modal.
+
+#### 3.1.1.5 `selectSignUp()`: Sets the active modal to the signup modal.
+
+#### 3.1.1.6 `handleCardClick(card)`: Handles the click event on a card (product) and sets the active modal to the product view modal, storing the card data in the `activeCard` state variable.
+
+#### 3.1.1.7`handleUpdateClick()`: Sets the active modal to the user update profile modal.
+
+#### 3.1.1.8 `handleLoginSubmit(email, password)`: Handles the form submission for the login modal. It sends the login credentials to the server for authentication and updates the necessary state variables upon successful login.
+
+#### 3.1.1.9 `handleSignUpSubmit(values)`: Handles the form submission for the signup modal. It sends the signup data to the server for registration, and upon
+
+successful registration, updates the necessary state variables and logs the user in.
+
+#### 3.1.1.10 `handleUpdateProfileSubmit(values)`: Handles the form submission for the user update profile modal. It sends the updated profile data to the server and updates the necessary state variables.
+
+#### 3.1.1.11 `handleLogout()`: Logs the user out by clearing the necessary state variables and redirecting to the main page.
+
+#### 3.1.1.12 `handleMenuClick(selection)`: Updates the active menu selection based on user clicks.
+
+#### 3.1.1.13 `handleAdminPanelClick()`: Toggles the developer mode (admin panel) on or off.
+
+### Lifecycle and Effects
+
+The `App` component utilizes the `useEffect` hook to handle lifecycle events and perform side effects:
+
+- **useEffect(() => {}, [])**: This effect runs once when the component mounts. It fetches the list of products from the server and updates the `productList` state variable.
+- **useEffect(() => {}, [isLoggedIn])**: This effect runs whenever the `isLoggedIn` state variable changes. It checks if the user is logged in and updates the `isAdmin` state variable accordingly.
+
+### Rendering
+
+The `App` component renders various components based on the current route and application state. It uses the `Route` and `Switch` components from `react-router-dom` for routing and conditional rendering.
+
+The rendered components include:
+
+- The `Header` component, which displays the application header.
+- The `Main` component, which renders the main content of the application based on the active menu selection.
+- The `Footer` component, which displays the application footer.
+
+Additionally, the component conditionally renders modals based on the `activeModal` state variable.
+
+## Conclusion
+
+The `App` component serves as the main entry point and central hub of the application. It manages the application state, handles user interactions, and renders different components based on the current route and user authentication status. It interacts with various API functions to fetch data from the server, and it utilizes context providers to share data across components. The component also includes helper functions and side effects to handle different aspects of the application logic.
 
 ### Detailed Function Documentation
 
-#### 3.1.1.1. `getUserFirstLetter(name: string): string`
+Certainly! Here's the detailed documentation for the helper functions used in the `App` component:
 
-This function takes a `name` string as input and returns the first letter of the name as a string. It is used to generate an alternate avatar for the user based on their name.
+### 3.1.1.1 `getUserFirstLetter(name)`
 
-Parameters:
+This function takes a user's name as input and returns the first letter of the name.
 
-- `name` (string): The name from which to extract the first letter.
+- `name` (string): The name of the user.
 
-Return Value:
+Returns:
 
-- `firstLetter` (string): The first letter of the name.
+- The first letter of the user's name as a string.
 
-#### 3.1.1.2. `convertToFloat(string: string): number`
+#### 3.1.1.2 `convertToFloat(string)`
 
-This function takes a `string` as input and converts it to a floating-point number. It is used to convert a string representation of a price to a float value.
+This function converts a string representation of a number to a floating-point number.
 
-Parameters:
+- `string` (string): The string representation of a number.
 
-- `string` (string): The string to be converted to a float.
+Returns:
 
-Return Value:
+- The floating-point representation of the input string.
 
-- `floatValue` (number): The converted floating-point number.
+#### 3.1.1.3 `generateJoke()`
 
-#### 3.1.1.3. `generateJoke(): void`
+This function fetches a Chuck Norris joke from the server and updates the `chuckJoke` state variable.
 
-This function generates a Chuck Norris joke by making an asynchronous API call to the server. It updates the `chuckJoke` state with the retrieved joke.
+No input parameters.
 
-Return Value:
-
-- None.
-
-#### 3.1.1.4. `selectLogin(): void`
-
-This function is called when the user selects the login option. It sets the `activeModal` state to "login", triggering the display of the login modal.
-
-Return Value:
+Returns:
 
 - None.
 
-#### 3.1.1.5. `selectSignUp(): void`
+#### 3.1.1.4 `selectLogin()`
 
-This function is called when the user selects the sign-up option. It sets the `activeModal` state to "signup", triggering the display of the sign-up modal.
+This function sets the active modal to the login modal.
 
-Return Value:
+No input parameters.
 
-- None.
-
-#### 3.1.1.6. `handleCardClick(card: object): void`
-
-This function is called when a product card is clicked. It takes the clicked `card` object as input and sets the `activeModal` state to "productpreview" and the `activeCard` state to the clicked card. This opens the product preview modal and displays the details of the clicked product.
-
-Parameters:
-
-- `card` (object): The clicked product card object.
-
-Return Value:
+Returns:
 
 - None.
 
-#### 3.1.1.7. `handleUpdateClick(): void`
+#### 3.1.1.5 `selectSignUp()`
 
-This function is called when the user clicks the update button in the user profile page. It sets the `activeModal` state to "update", opening the user profile update modal.
+This function sets the active modal to the signup modal.
 
-Return Value:
+No input parameters.
 
-- None.
-
-#### 3.1.1.8. `handleLoginSubmit(user: object): void`
-
-This function is called when the login form is submitted. It takes the `user` object containing the email and password as input. It validates the user credentials and updates the necessary states if the login is successful. If the login fails, it sets the `errorDisplay` state to show an error message.
-
-Parameters:
-
-- `user` (object): The user object containing the email and password.
-
-Return Value:
+Returns:
 
 - None.
 
-#### 3.1.1.9. `handleSignUpSubmit(): void`
+#### 3.1.1.6 `handleCardClick(card)`
 
-This function is called when the sign-up form is submitted. It redirects the user to the "/building" route, indicating that the sign-up process is still under construction.
+This function handles the click event on a card (product) and sets the active modal to the product view modal, storing the card data in the `activeCard` state variable.
 
-Return Value:
+- `card` (object): The data of the clicked card.
 
-- None.
-
-#### 3.1.1.10. `handleUpdateSubmit(values: object): void`
-
-This function is called when the user profile update form is submitted. It takes the `values` object containing the updated profile information as input. It currently logs the updated values to the console.
-
-Parameters:
-
-- `values` (object): The updated profile information.
-
-Return Value:
+Returns:
 
 - None.
 
-#### 3.1.1.11. `handleLogOut(): void`
+#### 3.1.1.7 `handleUpdateClick()`
 
-This function is called when the user clicks the logout option. It logs out the user by setting the `isLoggedIn` state to false and redirects the user to the "/" route.
+This function sets the active modal to the user update profile modal.
 
-Return Value:
+No input parameters.
+
+Returns:
 
 - None.
 
-#### 3.1.1.12
+#### 3.1.1.8 `handleLoginSubmit(email, password)`
+
+This function handles the form submission for the login modal. It sends the login credentials to the server for authentication and updates the necessary state variables upon successful login.
+
+- `email` (string): The user's email address.
+- `password` (string): The user's password.
+
+Returns:
+
+- None.
+
+#### 3.1.1.9 `handleSignUpSubmit(values)`
+
+This function handles the form submission for the signup modal. It sends the signup data to the server for registration, and upon successful registration, updates the necessary state variables and logs the user in.
+
+- `values` (object): An object containing the signup form values, including `name`, `email`, and `password`.
+
+Returns:
+
+- None.
+
+#### 3.1.1.10 `handleUpdateProfileSubmit(values)`
+
+This function handles the form submission for the user update profile modal. It sends the updated profile data to the server and updates the necessary state variables.
+
+- `values` (object): An object containing the updated profile form values, including `name` and `email`.
+
+Returns:
+
+- None.
+
+#### 3.1.1.11 `handleLogout()`
+
+This function logs the user out by clearing the necessary state variables and redirecting to the main page.
+
+No input parameters.
+
+Returns:
+
+- None.
+
+#### 3.1.1.12 `handleMenuClick(selection)`
+
+This function updates the active menu selection based on user clicks.
+
+- `selection` (string): The selected menu option.
+
+Returns:
+
+- None.
+
+#### 3.1.1.13 `handleAdminPanelClick()`
+
+This function toggles the developer mode (admin panel) on or off.
+
+No input parameters.
+
+Returns:
+
+- None.
+
+These helper functions are used within the `App` component to handle user interactions, form submissions, and other operations. They encapsulate specific functionality and are called at appropriate times to perform their respective tasks.
 
 ### Component Structure
 
@@ -726,7 +848,7 @@ function LoginModal({ isLoading }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleLoginSubmit(values);
+    handleLoginSubmit(email, password);
   }
 
   useEffect(() => {
@@ -1861,7 +1983,7 @@ The following constants are used in the website codebase:
 
 All the constants mentioned above are exported and can be imported and used in other modules as needed.
 
-### 3.3.5. useFormAndValidation Hook
+### 3.3.5 useFormAndValidation Hook
 
 The `useFormAndValidation` hook provides a convenient way to manage form state and validation in React components.
 
@@ -1944,3 +2066,180 @@ In the example above, we initialize the form state and validation using the `use
 Make sure to provide proper validation rules and error messages for each form field. The example above demonstrates basic form validation using the `required` attribute and displaying the validation error message when applicable.
 
 Remember to import the `useFormAndValidation` hook from the correct file path based on your project structure.
+
+### 3.3.6. Notes on Base64 Strings as Images with JSON
+
+#### 3.3.6.1 Create a file upload component
+
+In the `src` folder of your project, create a new file called `ImageUpload.js`. This component will handle the image file upload and conversion.
+
+```jsx
+import React, { useState } from "react";
+
+const ImageUpload = () => {
+  const [imageData, setImageData] = useState("");
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64String = reader.result;
+      setImageData(base64String);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  return (
+    <div>
+      <h2>Image Upload</h2>
+      <input type='file' onChange={handleFileUpload} />
+      {imageData && <img src={imageData} alt='Uploaded' />}
+    </div>
+  );
+};
+
+export default ImageUpload;
+```
+
+#### 3.3.6.2 Use the ImageUpload component
+
+Open the `src/App.js` file and replace its content with the following code:
+
+```jsx
+import React from "react";
+import ImageUpload from "./ImageUpload";
+
+const App = () => {
+  return (
+    <div>
+      <h1>React Image Upload</h1>
+      <ImageUpload />
+    </div>
+  );
+};
+
+export default App;
+```
+
+#### 3.3.6.3 Test the image upload
+
+Click the "Choose File" button, select an image file from your local machine, and click "Open." The image will be converted to a base64 string and displayed below the file input.
+
+Congratulations! You have successfully implemented the image file upload, conversion to a base64 string, and displaying the image in your React app.
+
+Feel free to customize the styling and functionality according to your requirements.
+
+#### 3.3.6.4 Send image to database
+
+To send the base64 string to a server in JSON format, you can make use of the `fetch` function in JavaScript. Here's an updated version of the `ImageUpload.js` component that includes the code to send the base64 string to the server:
+
+```jsx
+import React, { useState } from "react";
+
+const ImageUpload = () => {
+  const [imageData, setImageData] = useState("");
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64String = reader.result;
+      setImageData(base64String);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  const handleUpload = () => {
+    fetch("https://your-server-endpoint", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ image: imageData }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Server response:", data);
+        // Handle server response here
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle error here
+      });
+  };
+
+  return (
+    <div>
+      <h2>Image Upload</h2>
+      <input type='file' onChange={handleFileUpload} />
+      {imageData && <img src={imageData} alt='Uploaded' />}
+      {imageData && <button onClick={handleUpload}>Upload Image</button>}
+    </div>
+  );
+};
+
+export default ImageUpload;
+```
+
+In the `handleUpload` function, we're making a `POST` request to the server endpoint URL specified in `fetch`. We're sending the base64 string in the request body as JSON using `JSON.stringify({ image: imageData })`.
+
+Make sure to replace `'https://your-server-endpoint'` with the actual URL of your server endpoint.
+
+Upon receiving the server's response, you can handle it as needed. The response data is logged to the console in the example, but you can modify the code to perform any necessary actions based on the server's response.
+
+Remember to handle any errors that may occur during the fetch request by catching them in the `catch` block.
+
+#### 3.3.6.5 Retrieve image from database and display
+
+Here's an example of how you can use a GET request to retrieve the image data from a server and display it on a page in a different React app:
+
+```jsx
+import React, { useEffect, useState } from "react";
+
+const ImageDisplay = () => {
+  const [imageData, setImageData] = useState("");
+
+  useEffect(() => {
+    fetch("https://your-server-endpoint/image", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Image data:", data.image);
+        setImageData(data.image);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle error here
+      });
+  }, []);
+
+  return (
+    <div>
+      <h2>Image Display</h2>
+      {imageData && <img src={imageData} alt='Displayed' />}
+    </div>
+  );
+};
+
+export default ImageDisplay;
+```
+
+In the `useEffect` hook, we're making a GET request to the server endpoint URL specified in `fetch`. We expect the server to respond with the image data in the JSON format, which we extract and store in the `imageData` state variable using `setImageData(data.image)`.
+
+Make sure to replace `'https://your-server-endpoint/image'` with the actual URL of your server endpoint, along with the appropriate route for retrieving the image.
+
+The `useEffect` hook is used with an empty dependency array `[]`, which ensures that the request is made only once when the component mounts.
+
+In the render part, we conditionally render the `img` tag with the `imageData` URL as the source to display the image once it's fetched.
+
+Remember to handle any errors that may occur during the fetch request by catching them in the `catch` block.
+
+With this setup, when the `ImageDisplay` component is rendered in a different React app, it will make a GET request to retrieve the image data from the server and display it on the page.
