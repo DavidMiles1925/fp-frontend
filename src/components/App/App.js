@@ -1,18 +1,30 @@
-// ********** Fonts **********
-import "../../fonts/fonts.css";
-
 // ********** Tools **********
 import { Route, Switch, useHistory } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
+
+// ********** Styles **********
+import "../../fonts/fonts.css";
 import "./App.css";
 
 // ********** API **********
-import { database } from "../../utils/mockServer";
 import { getJoke } from "../../utils/chuckNorrisApi";
+import {
+  signup,
+  signin,
+  checkToken,
+  updateUser,
+  addToCart,
+  removeFromCart,
+  updateCartTotal,
+} from "../../utils/auth";
+import { getProducts } from "../../utils/api";
 
 // ********** Contexts **********
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { ValidationContext } from "../../contexts/ValidationContext";
+import {
+  ValidationContext,
+  errorMessageHandler,
+} from "../../contexts/ValidationContext";
 
 // ********** Main Site Components **********
 import Header from "../Header/Header";
@@ -105,30 +117,77 @@ function App() {
   }
 
   // ********** Submission Handlers **********
-  function handleLoginSubmit(user) {
+  function handleLoginSubmit(email, password) {
     setIsLoading(true);
-    if (user.email === "user@host.com" && user.password === "password") {
-      const user = database.users[0];
-      setCurrentUser(user);
-      setAlternateAvatar(getUserFirstLetter(user.name));
-      setIsLoggedIn(true);
-      closeModal();
-    } else {
-      setErrorDisplay({ value: true, message: "Invalid email or password." });
-    }
-    setIsLoading(false);
+
+    const user = { email, password };
+
+    signin(user)
+      .then((res) => {
+        localStorage.setItem("token", res.token);
+
+        checkToken(res.token).then((res) => {
+          setCurrentUser(JSON.parse(JSON.stringify(res.data)));
+          setIsLoggedIn(true);
+          setAlternateAvatar(getUserFirstLetter(res.data.name));
+          setActiveMenuSelection(userDropdown[0]);
+          history.push("/");
+        });
+
+        closeModal();
+      })
+      .catch((err) => {
+        handleModalErrorDisplay(true, errorMessageHandler(err));
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
-  function handleSignUpSubmit() {
-    history.push("/building");
-    closeModal();
+  function handleSignUpSubmit(values) {
+    setIsLoading(true);
+
+    const { email, password } = values;
+
+    signup(values)
+      .then((res) => {
+        handleLoginSubmit(email, password);
+        closeModal();
+      })
+      .catch((err) => {
+        handleModalErrorDisplay(true, errorMessageHandler(err));
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   function handleUpdateSubmit(values) {
-    console.log(values);
+    setIsLoading(true);
+
+    const { name, phone, street, apt, city, state, zip } = values;
+
+    const address = { street, apt, city, state, zip };
+
+    const token = localStorage.getItem("token");
+
+    updateUser({ name, phone, address, token })
+      .then((res) => {
+        setCurrentUser(res.data);
+        closeModal();
+      })
+      .catch((err) => {
+        handleModalErrorDisplay(true, errorMessageHandler(err));
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   function handleLogOut() {
+    localStorage.removeItem("token");
+    setCurrentUser();
+    setAlternateAvatar("");
     setIsLoggedIn(false);
     history.push("/");
   }
@@ -142,17 +201,38 @@ function App() {
     setIsAdmin(!isAdmin);
   }
 
-  function handleAddToCart(_id) {
-    console.log(_id);
+  function handleAddToCart(_id, price) {
     if (isLoggedIn) {
-      closeModal();
-      history.push("building");
+      const token = localStorage.getItem("token");
+      const newTotal = String(
+        convertToFloat(currentUser.cartTotal) + convertToFloat(price)
+      );
+      addToCart(_id, newTotal, token)
+        .then((user) => {
+          setCurrentUser(user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
-      setActiveModal("signup");
+      setActiveModal("login");
     }
   }
 
-  function handleRemoveFromCart() {}
+  function handleRemoveFromCart(_id, price) {
+    const token = localStorage.getItem("token");
+    const newTotal = String(
+      convertToFloat(currentUser.cartTotal) - convertToFloat(price)
+    );
+
+    removeFromCart(_id, newTotal, token)
+      .then((user) => {
+        setCurrentUser(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   function adjustCartTotalForPriceChanges(cartItems) {
     let currentTotal = 0;
@@ -164,23 +244,14 @@ function App() {
     currentTotal = String(currentTotal);
 
     if (currentTotal !== currentUser.cartTotal) {
-      console.log(
-        "An item in your cart has experienced a price change, or has been discontinued."
-      );
-
-      /*
       const token = localStorage.getItem("token");
       updateCartTotal(String(currentTotal), token)
         .then((user) => {
           setCurrentUser(user);
-          console.log(
-            "An item in your cart has experienced a price change, or has been discontinued."
-          );
         })
         .catch((err) => {
           console.log(err);
         });
-        */
     }
   }
 
@@ -205,18 +276,56 @@ function App() {
     setErrorDisplay({ value, message });
   }
 
+  // ********** Authentication **********
+  function getLocalToken() {
+    try {
+      const jwt = localStorage.getItem("token");
+      return jwt;
+    } catch {
+      return null;
+    }
+  }
+
+  function checkAccess() {
+    const jwt = getLocalToken();
+
+    if (jwt) {
+      checkToken(jwt)
+        .then((res) => {
+          setCurrentUser(JSON.parse(JSON.stringify(res.data)));
+          setAlternateAvatar(getUserFirstLetter(res.data.name));
+          setIsLoggedIn(true);
+          history.push("/");
+        })
+        .catch((err) => {
+          console.log("No token found ", err.message);
+          handleModalErrorDisplay(true, errorMessageHandler(err));
+        });
+    }
+  }
+
+  // ********** Listeners **********
+
   useEffect(() => {
     setActiveMenuSelection(userDropdown[0]);
   }, []);
 
   useEffect(() => {
-    setCurrentUser({
-      cart: [],
-    });
+    checkAccess();
   }, []);
 
   useEffect(() => {
-    setProductList(database.products);
+    setCurrentUser({ cart: [], cartTotal: "none" });
+  }, []);
+
+  useEffect(() => {
+    getProducts()
+      .then((products) => {
+        setProductList(products);
+      })
+      .catch((err) => {
+        console.log("error occured");
+      });
   }, []);
 
   useEffect(() => {

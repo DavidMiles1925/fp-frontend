@@ -2,7 +2,6 @@ import "./JokeGenerator.css";
 
 function JokeGenerator({ generateJoke, chuckJoke, isLoading }) {
   function handleJokeClick() {
-    console.log(isLoading);
     generateJoke();
   }
 
