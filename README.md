@@ -1,6 +1,11 @@
 # Final Project: Merchandise Sales Site
 
-Frontend Repository: [Frontend Repo](https://github.com/DavidMiles1925/fp-frontend).
+## Site Links
+
+Website: [Website](https://www.dmwtwr.crabdance.com/)  
+API: [API](https://api.dmwtwr.crabdance.com/)
+
+Frontend Repository: [Frontend Repo](https://github.com/DavidMiles1925/fp-frontend).  
 Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend).
 
 ## Table Of Contents

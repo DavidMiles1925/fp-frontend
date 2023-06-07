@@ -1,7 +1,4 @@
-import { request } from "./api.js";
-
-const baseUrl =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:3001";
+import { request, baseUrl } from "./api.js";
 
 function signup(data) {
   const { name, phone, email, password } = data;
@@ -71,7 +68,6 @@ function removeFromCart(_id, cartTotal, token) {
 }
 
 function updateCartTotal(cartTotal, token) {
-  console.log(`Updating Cart Total: ${cartTotal}`);
   return request(`${baseUrl}/users/cart`, {
     method: "PATCH",
     headers: {
