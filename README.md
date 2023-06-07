@@ -359,7 +359,7 @@ The `App` component serves as the main entry point and central hub of the applic
 
 ### Detailed Function Documentation
 
-Certainly! Here's the detailed documentation for the helper functions used in the `App` component:
+These helper functions are used within the `App` component to handle user interactions, form submissions, and other operations. They encapsulate specific functionality and are called at appropriate times to perform their respective tasks.
 
 ### 3.1.1.1 `getUserFirstLetter(name)`
 
@@ -491,8 +491,6 @@ No input parameters.
 Returns:
 
 - None.
-
-These helper functions are used within the `App` component to handle user interactions, form submissions, and other operations. They encapsulate specific functionality and are called at appropriate times to perform their respective tasks.
 
 ### Component Structure
 
