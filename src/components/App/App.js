@@ -370,7 +370,7 @@ function App() {
           history={history}
         />
         <Switch>
-          <Route path='about'>
+          <Route path='/about'>
             <AboutUs />
           </Route>
           <Route path='/building'>
