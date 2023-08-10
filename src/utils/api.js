@@ -1,6 +1,7 @@
-// const baseUrl = "https://my-json-server.typicode.com/DavidMiles1925/se_project_react";
 const baseUrl =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:3001";
+  process.env.NODE_ENV === "production"
+    ? "//api.dmwtwr.crabdance.com"
+    : "http://localhost:3001";
 
 const processServerResponse = (res) => {
   if (res.ok) {
@@ -50,4 +51,4 @@ function deleteProduct(id, token) {
   });
 }
 
-export { request, getProducts, createProduct, deleteProduct };
+export { baseUrl, request, getProducts, createProduct, deleteProduct };
