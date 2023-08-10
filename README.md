@@ -208,7 +208,7 @@ Sure! Here's the developer documentation for the given code:
 
 The `App` component serves as the main entry point for the application. It is responsible for rendering different components based on the current route and managing the application state.
 
-### Dependencies
+### 3.1.1.1 Dependencies
 
 The `App` component imports the following dependencies:
 
@@ -221,57 +221,39 @@ The `App` component imports the following dependencies:
   - `useEffect`: Runs a side effect function after the component renders.
   - `useState`: Manages state variables in functional components.
 
-### Styles
-
-The `App` component imports CSS stylesheets for fonts and the main `App` component.
-
-### API
-
-The `App` component imports various API functions for interacting with the server and performing authentication and data retrieval operations.
-
-### Contexts
+### 3.1.1.2 Contexts
 
 The `App` component imports context providers and handlers for managing user data and validation.
 
-- `CurrentUserContext`: Provides the current user's data and related functions.
-- `ValidationContext`: Manages form validation and error messages.
+- `CurrentUserContext`: Provides the current user data and related functions to its descendants. It includes the following context values:
 
-### Main Site Components
+  - `currentUser`: The current user object.
+  - `alternateAvatar`: A string representing an alternate avatar based on the user's name.
+  - `isLoggedIn`: A boolean indicating whether the user is logged in.
+  - `activeMenuSelection`: The currently selected menu option.
+  - `isAdmin`: A boolean indicating whether the user is an admin.
+  - `isDevMode`: A boolean indicating whether the application is in developer mode.
+  - `handleLogOut`: A function to handle user log out.
+  - `setActiveMenuSelection`: A function to set the active menu selection.
 
-The `App` component imports components used in the main site section of the application.
+- `ValidationContext`: Manages form validation and error messages. It includes the following context values:
 
-- `Header`: Renders the application header.
-- `Footer`: Renders the application footer.
-- `Main`: Renders the main content of the application.
-- `AboutUs`: Renders the About Us page.
-- `ProductsPage`: Renders the products page.
+  - `errorDisplay`: An object containing the error display state (`value`) and error message (`message`).
+  - `disableButton`: A boolean indicating whether the form submission button should be disabled.
+  - `handleLoginSubmit`: A function to handle the login form submission.
+  - `closeActiveModal`: A function to close the active modal.
+  - `setActiveModal`: A function to set the active modal.
+  - `handleModalErrorDisplay`: A function to update the error display state.
+  - `setDisableButton`: A function to set the disable button state.
 
-### User Profile Components
+### 3.1.1.3 Lifecycle and Effects
 
-The `App` component imports components used in the user profile section of the application.
+The `App` component utilizes the `useEffect` hook to handle lifecycle events and perform side effects:
 
-- `ProtectedRoute`: Renders a protected route that requires authentication.
-- `UserProfilePage`: Renders the user profile page.
-- `UserInformationPage`: Renders the user information page.
-- `ShoppingCart`: Renders the user's shopping cart.
+- **useEffect(() => {}, [])**: This effect runs once when the component mounts. It fetches the list of products from the server and updates the `productList` state variable.
+- **useEffect(() => {}, [isLoggedIn])**: This effect runs whenever the `isLoggedIn` state variable changes. It checks if the user is logged in and updates the `isAdmin` state variable accordingly.
 
-### Developer Components
-
-The `App` component imports components used in the developer section of the application.
-
-- `StillBuildingPage`: Renders the "Still Building" page.
-- `DeveloperPanel`: Renders the developer panel.
-
-### Modals
-
-The `App` component imports modal components used for user authentication and product previews.
-
-- `RegisterModal`: Renders the registration modal.
-- `LoginModal`: Renders the login modal.
-- `ProductViewModal`: Renders the product view modal.
-- `UserUpdateProfileModal`: Renders the user update profile modal.
-
-### State Variables
+### 3.1.1.4 State Variables
 
 The `App` component defines several state variables using the `useState` hook to manage different aspects of the application state:
 
@@ -289,92 +271,11 @@ The `App` component defines several state variables using the `useState` hook to
 - `errorDisplay`: Stores the error display information.
 - `isLoading`: Indicates whether a loading state is active.
 
-### Helper Functions
-
-The `App` component defines several helper functions that are used within the component:
-
-#### 3.1.1.1 `getUserFirstLetter(name)`:
-
-- Takes a user's name as input and returns the first letter of the name.
-
-#### 3.1.1.2 `convertToFloat(string)`:
-
-- Converts a string representation of a number to a floating-point number.
-
-#### 3.1.1.3 `generateJoke()`:
-
-- Fetches a Chuck Norris joke from the server and updates the `chuckJoke` state variable.
-
-#### 3.1.1.4 `selectLogin()`:
-
-- Sets the active modal to the login modal.
-
-#### 3.1.1.5 `selectSignUp()`:
-
-- Sets the active modal to the signup modal.
-
-#### 3.1.1.6 `handleCardClick(card)`:
-
-- Handles the click event on a card (product) and sets the active modal to the product view modal, storing the card data in the `activeCard` state variable.
-
-#### 3.1.1.7`handleUpdateClick()`:
-
-- Sets the active modal to the user update profile modal.
-
-#### 3.1.1.8 `handleLoginSubmit(email, password)`:
-
-- Handles the form submission for the login modal. It sends the login credentials to the server for authentication and updates the necessary state variables upon successful login.
-
-#### 3.1.1.9 `handleSignUpSubmit(values)`:
-
-- Handles the form submission for the signup modal. It sends the signup data to the server for registration, and upon
-
-successful registration, updates the necessary state variables and logs the user in.
-
-#### 3.1.1.10 `handleUpdateProfileSubmit(values)`:
-
-- Handles the form submission for the user update profile modal. It sends the updated profile data to the server and updates the necessary state variables.
-
-#### 3.1.1.11 `handleLogout()`:
-
-- Logs the user out by clearing the necessary state variables and redirecting to the main page.
-
-#### 3.1.1.12 `handleMenuClick(selection)`:
-
-- Updates the active menu selection based on user clicks.
-
-#### 3.1.1.13 `handleAdminPanelClick()`:
-
-- Toggles the developer mode (admin panel) on or off.
-
-### Lifecycle and Effects
-
-The `App` component utilizes the `useEffect` hook to handle lifecycle events and perform side effects:
-
-- **useEffect(() => {}, [])**: This effect runs once when the component mounts. It fetches the list of products from the server and updates the `productList` state variable.
-- **useEffect(() => {}, [isLoggedIn])**: This effect runs whenever the `isLoggedIn` state variable changes. It checks if the user is logged in and updates the `isAdmin` state variable accordingly.
-
-### Rendering
-
-The `App` component renders various components based on the current route and application state. It uses the `Route` and `Switch` components from `react-router-dom` for routing and conditional rendering.
-
-The rendered components include:
-
-- The `Header` component, which displays the application header.
-- The `Main` component, which renders the main content of the application based on the active menu selection.
-- The `Footer` component, which displays the application footer.
-
-Additionally, the component conditionally renders modals based on the `activeModal` state variable.
-
-## Conclusion
-
-The `App` component serves as the main entry point and central hub of the application. It manages the application state, handles user interactions, and renders different components based on the current route and user authentication status. It interacts with various API functions to fetch data from the server, and it utilizes context providers to share data across components. The component also includes helper functions and side effects to handle different aspects of the application logic.
-
-### Detailed Function Documentation
+### 3.1.1.5 Detailed Function Documentation
 
 These helper functions are used within the `App` component to handle user interactions, form submissions, and other operations. They encapsulate specific functionality and are called at appropriate times to perform their respective tasks.
 
-### 3.1.1.1 `getUserFirstLetter(name)`
+### 3.1.1.5.1 `getUserFirstLetter(name)`
 
 This function takes a user's name as input and returns the first letter of the name.
 
@@ -384,7 +285,7 @@ Returns:
 
 - The first letter of the user's name as a string.
 
-#### 3.1.1.2 `convertToFloat(string)`
+#### 3.1.1.5.2 `convertToFloat(string)`
 
 This function converts a string representation of a number to a floating-point number.
 
@@ -394,7 +295,7 @@ Returns:
 
 - The floating-point representation of the input string.
 
-#### 3.1.1.3 `generateJoke()`
+#### 3.1.1.5.3 `generateJoke()`
 
 This function fetches a Chuck Norris joke from the server and updates the `chuckJoke` state variable.
 
@@ -404,7 +305,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.4 `selectLogin()`
+#### 3.1.1.5.4 `selectLogin()`
 
 This function sets the active modal to the login modal.
 
@@ -414,7 +315,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.5 `selectSignUp()`
+#### 3.1.1.5.5 `selectSignUp()`
 
 This function sets the active modal to the signup modal.
 
@@ -424,7 +325,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.6 `handleCardClick(card)`
+#### 3.1.1.5.6 `handleCardClick(card)`
 
 This function handles the click event on a card (product) and sets the active modal to the product view modal, storing the card data in the `activeCard` state variable.
 
@@ -434,7 +335,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.7 `handleUpdateClick()`
+#### 3.1.1.5.7 `handleUpdateClick()`
 
 This function sets the active modal to the user update profile modal.
 
@@ -444,7 +345,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.8 `handleLoginSubmit(email, password)`
+#### 3.1.1.5.8 `handleLoginSubmit(email, password)`
 
 This function handles the form submission for the login modal. It sends the login credentials to the server for authentication and updates the necessary state variables upon successful login.
 
@@ -455,7 +356,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.9 `handleSignUpSubmit(values)`
+#### 3.1.1.5.9 `handleSignUpSubmit(values)`
 
 This function handles the form submission for the signup modal. It sends the signup data to the server for registration, and upon successful registration, updates the necessary state variables and logs the user in.
 
@@ -465,7 +366,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.10 `handleUpdateProfileSubmit(values)`
+#### 3.1.1.5.10 `handleUpdateProfileSubmit(values)`
 
 This function handles the form submission for the user update profile modal. It sends the updated profile data to the server and updates the necessary state variables.
 
@@ -475,7 +376,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.11 `handleLogout()`
+#### 3.1.1.5.11 `handleLogout()`
 
 This function logs the user out by clearing the necessary state variables and redirecting to the main page.
 
@@ -485,7 +386,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.12 `handleMenuClick(selection)`
+#### 3.1.1.5.12 `handleMenuClick(selection)`
 
 This function updates the active menu selection based on user clicks.
 
@@ -495,7 +396,7 @@ Returns:
 
 - None.
 
-#### 3.1.1.13 `handleAdminPanelClick()`
+#### 3.1.1.5.13 `handleAdminPanelClick()`
 
 This function toggles the developer mode (admin panel) on or off.
 
@@ -505,50 +406,7 @@ Returns:
 
 - None.
 
-### Component Structure
-
-The `App` component renders the following structure:
-
-- `div` with the class `app` (representing the root container of the application)
-  - `CurrentUserContext.Provider` (provides the current user data and related functions to its descendants)
-    - `Header` component (displays the application header with login and sign-up options)
-    - `Switch` component (enables routing within the application)
-      - `Route` components for different routes (`/about`, `/building`, `/main`, `/products`, `/userprofile`)
-        - Different page components based on the routes (`AboutUs`, `StillBuildingPage`, `Main`, `ProductsPage`, `UserProfilePage`, `UserInformationPage`, `ShoppingCart`)
-      - `ProtectedRoute` components for protected routes (`/userprofile/building`, `/userprofile/userinfo`, `/userprofile/usercart`)
-        - Different page components based on the protected routes (`StillBuildingPage`, `UserInformationPage`, `ShoppingCart`)
-      - A default `Route` component that renders the `Main` component for any other routes
-    - `Footer` component (displays the application footer)
-    - Conditional rendering of `DeveloperPanel` component when `isDevMode` is `true`
-    - Conditional rendering of login, signup, update, and product preview modals based on the `activeModal` state and respective form components (`LoginModal`, `RegisterModal`, `UserUpdateProfileModal`, `ProductViewModal`) wrapped with `ValidationContext.Provider` to provide form validation state and functions
-    - `LoginModal`: A modal component for user login. It renders a form for users to enter their email and password and handles form submission. It uses the `ValidationContext` to provide form validation state and functions.
-    - `RegisterModal`: A modal component for user sign-up. It renders a form for users to enter their registration details and handles form submission. It uses the `ValidationContext` to provide form validation state and functions.
-    - `UserUpdateProfileModal`: A modal component for updating user profile information. It renders a form for users to update their profile details and handles form submission. It uses the `ValidationContext` to provide form validation state and functions.
-    - `ProductViewModal`: A modal component for displaying product details. It receives a `card` prop containing the product information and provides options to add or remove the product from the cart.
-
-#### 3.1.1.13 Contexts
-
-- `CurrentUserContext`: Provides the current user data and related functions to its descendants. It includes the following context values:
-
-  - `currentUser`: The current user object.
-  - `alternateAvatar`: A string representing an alternate avatar based on the user's name.
-  - `isLoggedIn`: A boolean indicating whether the user is logged in.
-  - `activeMenuSelection`: The currently selected menu option.
-  - `isAdmin`: A boolean indicating whether the user is an admin.
-  - `isDevMode`: A boolean indicating whether the application is in developer mode.
-  - `handleLogOut`: A function to handle user log out.
-  - `setActiveMenuSelection`: A function to set the active menu selection.
-
-- `ValidationContext`: Provides form validation state and functions to its descendants. It includes the following context values:
-  - `errorDisplay`: An object containing the error display state (`value`) and error message (`message`).
-  - `disableButton`: A boolean indicating whether the form submission button should be disabled.
-  - `handleLoginSubmit`: A function to handle the login form submission.
-  - `closeActiveModal`: A function to close the active modal.
-  - `setActiveModal`: A function to set the active modal.
-  - `handleModalErrorDisplay`: A function to update the error display state.
-  - `setDisableButton`: A function to set the disable button state.
-
-#### 3.1.1.14 Routes
+#### 3.1.1.5.14 Routes
 
 - `/about`: Renders the `AboutUs` component.
 - `/building`: Renders the `StillBuildingPage` component.
