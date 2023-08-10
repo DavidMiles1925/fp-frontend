@@ -10,7 +10,7 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 
 ## Table Of Contents
 
-**1 - Project Features**
+### 1 - Project Features
 
 **-- 1.1 -** Code Layout and Semantics  
 -- 1.1.1 BEM Methodology  
@@ -33,7 +33,7 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 -- 1.4.1 Flexbox  
 -- 1.4.2 Grid Layout
 
-**2 - Future Development Plans**
+### 2 - Future Development Plans
 
 **-- 2.1 -** User Profile  
 -- 2.1.1 Sales API  
@@ -48,7 +48,8 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 
 **-- 2.4 -** Main Page Content
 
-**3 - Documentation**
+### 3 - Documentation
+
 **-- 3.1 -** Components  
 -- 3.1.1 App  
 -- 3.1.2 CardSection  
@@ -87,7 +88,7 @@ Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend)
 -- 3.3.2 auth  
 -- 3.3.3 chuckNorrisApi  
 -- 3.3.4 constants  
--- 3.3.5 useFormAndValidation
+-- 3.3.5 useFormAndValidation  
 -- 3.3.6 Notes on Base64 Strings as Images with JSON
 
 **-- 3.4 -** Dependencies
@@ -275,7 +276,7 @@ The `App` component defines several state variables using the `useState` hook to
 
 These helper functions are used within the `App` component to handle user interactions, form submissions, and other operations. They encapsulate specific functionality and are called at appropriate times to perform their respective tasks.
 
-### 3.1.1.5.1 `getUserFirstLetter(name)`
+#### 3.1.1.5.1 `getUserFirstLetter(name)`
 
 This function takes a user's name as input and returns the first letter of the name.
 
