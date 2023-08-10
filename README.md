@@ -188,11 +188,11 @@ Things like bumper stickers and key chains could be options in the distant futur
 
 ### 2.3 - Complete Documentation
 
-**-- 2.1.1** Developer Documentation (in progress, see below _section 3_)
+**-- 2.3.1** Developer Documentation (in progress, see below _section 3_)
 
 This is currently only a small side project. Later on, if this endevour is scaled up, it will be important for myself (or potentially other developers) to have notes about the code.
 
-**-- 2.1.1** User Documentation
+**-- 2.3.2** User Documentation
 
 This will include an FAQ for users to explore, as well as some helpful tips for navigating the website and order process as easily as possible.
 
@@ -200,7 +200,7 @@ This will include an FAQ for users to explore, as well as some helpful tips for 
 
 Currently the main page is lacking in rich content. The creation of more videos, as well as time spent growing the brand will allow for the creation of better and more abundant content.
 
-# 3 - Documentation
+# 3 - Developer Documentation
 
 Sure! Here's the developer documentation for the given code:
 
