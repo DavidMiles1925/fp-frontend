@@ -289,50 +289,63 @@ The `App` component defines several state variables using the `useState` hook to
 - `errorDisplay`: Stores the error display information.
 - `isLoading`: Indicates whether a loading state is active.
 
-### Import Statements
-
-The component imports various dependencies, styles, API functions, and other components required for the application. These imports are organized into different sections:
-
-- **Tools**: Imports necessary tools such as `Route`, `Switch`, and `useHistory` from `react-router-dom`, and `useCallback`, `useEffect`, and `useState` from `react`.
-- **Styles**: Imports CSS files for fonts and the `App` component itself.
-- **API**: Imports API functions for fetching data from external sources.
-- **Contexts**: Imports contexts used for managing application state.
-- **Main Site Components**: Imports components related to the main site, such as `Header`, `Footer`, `Main`, `AboutUs`, and `ProductsPage`.
-- **User Profile Components**: Imports components related to user profiles, including `ProtectedRoute`, `UserProfilePage`, `UserInformationPage`, and `ShoppingCart`.
-- **Developer Components**: Imports components specific to developers, such as `StillBuildingPage` and `DeveloperPanel`.
-- **Modals**: Imports various modal components used in the application, such as `RegisterModal`, `LoginModal`, `ProductViewModal`, and `UserUpdateProfileModal`.
-
 ### Helper Functions
 
 The `App` component defines several helper functions that are used within the component:
 
-#### 3.1.1.1 `getUserFirstLetter(name)`: Takes a user's name as input and returns the first letter of the name.
+#### 3.1.1.1 `getUserFirstLetter(name)`:
 
-#### 3.1.1.2 `convertToFloat(string)`: Converts a string representation of a number to a floating-point number.
+- Takes a user's name as input and returns the first letter of the name.
 
-#### 3.1.1.3 `generateJoke()`: Fetches a Chuck Norris joke from the server and updates the `chuckJoke` state variable.
+#### 3.1.1.2 `convertToFloat(string)`:
 
-#### 3.1.1.4 `selectLogin()`: Sets the active modal to the login modal.
+- Converts a string representation of a number to a floating-point number.
 
-#### 3.1.1.5 `selectSignUp()`: Sets the active modal to the signup modal.
+#### 3.1.1.3 `generateJoke()`:
 
-#### 3.1.1.6 `handleCardClick(card)`: Handles the click event on a card (product) and sets the active modal to the product view modal, storing the card data in the `activeCard` state variable.
+- Fetches a Chuck Norris joke from the server and updates the `chuckJoke` state variable.
 
-#### 3.1.1.7`handleUpdateClick()`: Sets the active modal to the user update profile modal.
+#### 3.1.1.4 `selectLogin()`:
 
-#### 3.1.1.8 `handleLoginSubmit(email, password)`: Handles the form submission for the login modal. It sends the login credentials to the server for authentication and updates the necessary state variables upon successful login.
+- Sets the active modal to the login modal.
 
-#### 3.1.1.9 `handleSignUpSubmit(values)`: Handles the form submission for the signup modal. It sends the signup data to the server for registration, and upon
+#### 3.1.1.5 `selectSignUp()`:
+
+- Sets the active modal to the signup modal.
+
+#### 3.1.1.6 `handleCardClick(card)`:
+
+- Handles the click event on a card (product) and sets the active modal to the product view modal, storing the card data in the `activeCard` state variable.
+
+#### 3.1.1.7`handleUpdateClick()`:
+
+- Sets the active modal to the user update profile modal.
+
+#### 3.1.1.8 `handleLoginSubmit(email, password)`:
+
+- Handles the form submission for the login modal. It sends the login credentials to the server for authentication and updates the necessary state variables upon successful login.
+
+#### 3.1.1.9 `handleSignUpSubmit(values)`:
+
+- Handles the form submission for the signup modal. It sends the signup data to the server for registration, and upon
 
 successful registration, updates the necessary state variables and logs the user in.
 
-#### 3.1.1.10 `handleUpdateProfileSubmit(values)`: Handles the form submission for the user update profile modal. It sends the updated profile data to the server and updates the necessary state variables.
+#### 3.1.1.10 `handleUpdateProfileSubmit(values)`:
 
-#### 3.1.1.11 `handleLogout()`: Logs the user out by clearing the necessary state variables and redirecting to the main page.
+- Handles the form submission for the user update profile modal. It sends the updated profile data to the server and updates the necessary state variables.
 
-#### 3.1.1.12 `handleMenuClick(selection)`: Updates the active menu selection based on user clicks.
+#### 3.1.1.11 `handleLogout()`:
 
-#### 3.1.1.13 `handleAdminPanelClick()`: Toggles the developer mode (admin panel) on or off.
+- Logs the user out by clearing the necessary state variables and redirecting to the main page.
+
+#### 3.1.1.12 `handleMenuClick(selection)`:
+
+- Updates the active menu selection based on user clicks.
+
+#### 3.1.1.13 `handleAdminPanelClick()`:
+
+- Toggles the developer mode (admin panel) on or off.
 
 ### Lifecycle and Effects
 
