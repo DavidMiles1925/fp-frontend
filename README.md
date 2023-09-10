@@ -2,8 +2,8 @@
 
 ## Site Links
 
-Website: [Website](https://www.dmwtwr.crabdance.com/)  
-API: [API](https://api.dmwtwr.crabdance.com/)
+Website:  
+API:
 
 Frontend Repository: [Frontend Repo](https://github.com/DavidMiles1925/fp-frontend).  
 Backend Repository: [Backend Repo](https://github.com/DavidMiles1925/fp-backend).
@@ -202,8 +202,6 @@ This will include an FAQ for users to explore, as well as some helpful tips for 
 Currently the main page is lacking in rich content. The creation of more videos, as well as time spent growing the brand will allow for the creation of better and more abundant content.
 
 # 3 - Developer Documentation
-
-Sure! Here's the developer documentation for the given code:
 
 ## 3.1.1 App Component
 
