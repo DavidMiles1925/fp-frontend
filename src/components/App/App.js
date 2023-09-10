@@ -32,13 +32,13 @@ import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import AboutUs from "../AboutUs/AboutUs";
 import ProductsPage from "../ProductsPage/ProductsPage";
+import UserProfilePage from "../UserProfilePage/UserProfilePage";
+import UserInformationPage from "../UserInformationPage/UserInformationPage";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 // ********** User Profile Components **********
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { userDropdown } from "../../utils/constants";
-import UserProfilePage from "../UserProfilePage/UserProfilePage";
-import UserInformationPage from "../UserInformationPage/UserInformationPage";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 // ********** Developer Components **********
 import StillBuildingPage from "../StillBuildingPage/StillBuildingPage";
